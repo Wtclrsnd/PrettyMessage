@@ -1,24 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fkb-cC-ps2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Шаблоны-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PrettyMessage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E7r-bf-EHw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="74k-yg-0vA">
+                                    <size key="itemSize" width="171" height="189"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="q3j-sj-hDY">
+                                        <rect key="frame" x="0.0" y="0.0" width="171" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hkq-7B-56a">
+                                            <rect key="frame" x="0.0" y="0.0" width="171" height="189"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="171" height="189"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="center" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xOs-bE-i0e">
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem width="70" style="plain" systemItem="search" id="ENU-xr-k6L"/>
+                                    <barButtonItem image="rectangle.3.offgrid" catalog="system" width="70" style="plain" id="Gvs-bz-10z"/>
+                                    <barButtonItem image="rectangle.on.rectangle.angled" catalog="system" width="70" style="plain" id="2Ek-95-y68"/>
+                                    <barButtonItem width="70" style="plain" systemItem="organize" id="eTb-J9-xPb">
+                                        <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="0.0" maxY="0.0"/>
+                                    </barButtonItem>
+                                    <barButtonItem image="square.fill.on.square.fill" catalog="system" width="70" style="plain" id="aJl-4l-sbu"/>
+                                    <barButtonItem image="paintbrush" catalog="system" width="70" style="plain" id="mbf-UO-RwX"/>
+                                    <barButtonItem width="70" style="plain" systemItem="camera" id="7KF-ff-HUY"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xOs-bE-i0e" firstAttribute="top" secondItem="E7r-bf-EHw" secondAttribute="bottom" id="2WC-eB-cYt"/>
+                            <constraint firstItem="xOs-bE-i0e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ao8-f0-LeR"/>
+                            <constraint firstItem="E7r-bf-EHw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cdu-g1-5jV"/>
+                            <constraint firstItem="E7r-bf-EHw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-44" id="PEa-g1-FEv"/>
+                            <constraint firstItem="xOs-bE-i0e" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="elJ-8o-5P8"/>
+                            <constraint firstItem="xOs-bE-i0e" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="k8W-JG-hpp"/>
+                            <constraint firstItem="E7r-bf-EHw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ovU-HQ-oXv"/>
+                            <constraint firstItem="E7r-bf-EHw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tQI-Sg-P5P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Шаблоны" largeTitleDisplayMode="always" id="zeY-Zm-Ub9"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1047.2" y="113.79310344827587"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5OC-hb-eGH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fkb-cC-ps2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="26u-VK-dbd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AQP-aD-B6k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BK-wF-1vV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="paintbrush" catalog="system" width="128" height="128"/>
+        <image name="rectangle.3.offgrid" catalog="system" width="128" height="80"/>
+        <image name="rectangle.on.rectangle.angled" catalog="system" width="128" height="101"/>
+        <image name="square.fill.on.square.fill" catalog="system" width="128" height="113"/>
+    </resources>
 </document>
