@@ -26,12 +26,18 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="q3j-sj-hDY">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="q3j-sj-hDY">
                                         <rect key="frame" x="0.0" y="0.0" width="171" height="189"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hkq-7B-56a">
                                             <rect key="frame" x="0.0" y="0.0" width="171" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdB-DO-m84">
+                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="189"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="171" height="189"/>
                                     </collectionViewCell>
@@ -45,7 +51,7 @@
                                     <barButtonItem title="Item" image="folder" catalog="system" width="83" style="plain" id="eTb-J9-xPb">
                                         <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="0.0" maxY="0.0"/>
                                     </barButtonItem>
-                                    <barButtonItem image="square.fill.on.square.fill" catalog="system" width="83" style="plain" id="aJl-4l-sbu"/>
+                                    <barButtonItem title="Item" width="83" style="plain" id="aJl-4l-sbu"/>
                                     <barButtonItem image="paintbrush" catalog="system" width="83" style="plain" id="mbf-UO-RwX"/>
                                 </items>
                             </toolbar>
@@ -72,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.2" y="113.79310344827587"/>
+            <point key="canvasLocation" x="1046.376811594203" y="113.16964285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5OC-hb-eGH">
@@ -98,6 +104,5 @@
         <image name="paintbrush" catalog="system" width="128" height="128"/>
         <image name="rectangle.3.offgrid" catalog="system" width="128" height="80"/>
         <image name="rectangle.on.rectangle" catalog="system" width="128" height="98"/>
-        <image name="square.fill.on.square.fill" catalog="system" width="128" height="113"/>
     </resources>
 </document>
