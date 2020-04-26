@@ -10,8 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var fillBucket: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fillBucket.setBackgroundImage(UIImage(named: "fillButton") , for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
     }
 
 
