@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fkb-cC-ps2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -40,15 +40,13 @@
                             <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="center" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xOs-bE-i0e">
                                 <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem width="70" style="plain" systemItem="search" id="ENU-xr-k6L"/>
-                                    <barButtonItem image="rectangle.3.offgrid" catalog="system" width="70" style="plain" id="Gvs-bz-10z"/>
-                                    <barButtonItem image="rectangle.on.rectangle.angled" catalog="system" width="70" style="plain" id="2Ek-95-y68"/>
-                                    <barButtonItem width="70" style="plain" systemItem="organize" id="eTb-J9-xPb">
+                                    <barButtonItem image="rectangle.3.offgrid" catalog="system" width="83" style="plain" id="Gvs-bz-10z"/>
+                                    <barButtonItem image="rectangle.on.rectangle" catalog="system" width="84" style="plain" id="2Ek-95-y68"/>
+                                    <barButtonItem title="Item" image="folder" catalog="system" width="83" style="plain" id="eTb-J9-xPb">
                                         <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="0.0" maxY="0.0"/>
                                     </barButtonItem>
-                                    <barButtonItem image="square.fill.on.square.fill" catalog="system" width="70" style="plain" id="aJl-4l-sbu"/>
-                                    <barButtonItem image="paintbrush" catalog="system" width="70" style="plain" id="mbf-UO-RwX"/>
-                                    <barButtonItem width="70" style="plain" systemItem="camera" id="7KF-ff-HUY"/>
+                                    <barButtonItem image="square.fill.on.square.fill" catalog="system" width="83" style="plain" id="aJl-4l-sbu"/>
+                                    <barButtonItem image="paintbrush" catalog="system" width="83" style="plain" id="mbf-UO-RwX"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -66,7 +64,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Шаблоны" largeTitleDisplayMode="always" id="zeY-Zm-Ub9"/>
+                    <navigationItem key="navigationItem" title="Шаблоны" largeTitleDisplayMode="always" id="zeY-Zm-Ub9">
+                        <barButtonItem key="leftBarButtonItem" width="70" systemItem="search" id="ENU-xr-k6L"/>
+                        <barButtonItem key="rightBarButtonItem" width="70" systemItem="camera" id="7KF-ff-HUY"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -93,9 +94,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="folder" catalog="system" width="128" height="95"/>
         <image name="paintbrush" catalog="system" width="128" height="128"/>
         <image name="rectangle.3.offgrid" catalog="system" width="128" height="80"/>
-        <image name="rectangle.on.rectangle.angled" catalog="system" width="128" height="101"/>
+        <image name="rectangle.on.rectangle" catalog="system" width="128" height="98"/>
         <image name="square.fill.on.square.fill" catalog="system" width="128" height="113"/>
     </resources>
 </document>
