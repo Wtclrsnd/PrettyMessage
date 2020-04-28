@@ -84,17 +84,58 @@
 		722A29502454A84400C06F05 /* PrettyMessage */ = {
 			isa = PBXGroup;
 			children = (
-				722A29512454A84400C06F05 /* AppDelegate.swift */,
-				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
-				722A29532454A84400C06F05 /* SceneDelegate.swift */,
-				722A29552454A84400C06F05 /* ViewController.swift */,
-				722A29572454A84500C06F05 /* Main.storyboard */,
-				722A295D2454A84800C06F05 /* Assets.xcassets */,
+				728EC1242458B87900C928C1 /* Common */,
+				728EC1232458B85B00C928C1 /* Models */,
+				728EC1202458B7C800C928C1 /* View */,
+				728EC1212458B7E100C928C1 /* ViewModels */,
+				728EC1222458B80300C928C1 /* Controllers */,
+			);
+			path = PrettyMessage;
+			sourceTree = "<group>";
+		};
+		728EC1202458B7C800C928C1 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				722A295F2454A84800C06F05 /* LaunchScreen.storyboard */,
+				722A29572454A84500C06F05 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		728EC1212458B7E100C928C1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		728EC1222458B80300C928C1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				722A29552454A84400C06F05 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		728EC1232458B85B00C928C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		728EC1242458B87900C928C1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				722A29512454A84400C06F05 /* AppDelegate.swift */,
+				722A29532454A84400C06F05 /* SceneDelegate.swift */,
+				722A295D2454A84800C06F05 /* Assets.xcassets */,
 				722A29622454A84800C06F05 /* Info.plist */,
 				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 			);
-			path = PrettyMessage;
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
