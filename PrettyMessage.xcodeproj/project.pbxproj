@@ -121,6 +121,7 @@
 		728EC1232458B85B00C928C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
 			);
 			name = Models;
@@ -133,7 +134,6 @@
 				722A29512454A84400C06F05 /* AppDelegate.swift */,
 				722A29532454A84400C06F05 /* SceneDelegate.swift */,
 				722A295D2454A84800C06F05 /* Assets.xcassets */,
-				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 			);
 			path = Common;
 			sourceTree = "<group>";
