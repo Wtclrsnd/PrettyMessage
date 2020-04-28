@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */; };
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
+		728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC11E24589BF800C928C1 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		722A295D2454A84800C06F05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		728EC11E24589BF800C928C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,7 +60,6 @@
 				62325548F1B77FFAC3DBF853 /* Pods-PrettyMessage.debug.xcconfig */,
 				525009306727C0AC33F59B81 /* Pods-PrettyMessage.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -84,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				722A29512454A84400C06F05 /* AppDelegate.swift */,
+				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
 				722A29532454A84400C06F05 /* SceneDelegate.swift */,
 				722A29552454A84400C06F05 /* ViewController.swift */,
 				722A29572454A84500C06F05 /* Main.storyboard */,
@@ -213,6 +215,7 @@
 				722A29562454A84400C06F05 /* ViewController.swift in Sources */,
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
+				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
