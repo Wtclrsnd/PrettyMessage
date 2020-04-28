@@ -6,5 +6,6 @@ target 'PrettyMessage' do
 
   pod 'Moya'
   pod 'Kingfisher'
+  pod 'Dip'
 
 end
