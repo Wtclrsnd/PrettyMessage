@@ -89,6 +89,7 @@
 				728EC1202458B7C800C928C1 /* View */,
 				728EC1212458B7E100C928C1 /* ViewModels */,
 				728EC1222458B80300C928C1 /* Controllers */,
+				722A29622454A84800C06F05 /* Info.plist */,
 			);
 			path = PrettyMessage;
 			sourceTree = "<group>";
@@ -132,7 +133,6 @@
 				722A29512454A84400C06F05 /* AppDelegate.swift */,
 				722A29532454A84400C06F05 /* SceneDelegate.swift */,
 				722A295D2454A84800C06F05 /* Assets.xcassets */,
-				722A29622454A84800C06F05 /* Info.plist */,
 				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 			);
 			path = Common;
