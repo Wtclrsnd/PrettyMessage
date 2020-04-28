@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fillBucket.setBackgroundImage(UIImage(named: "fillButton") , for: UIControl.State.normal, barMetrics: UIBarMetrics.default)
     }
 
 

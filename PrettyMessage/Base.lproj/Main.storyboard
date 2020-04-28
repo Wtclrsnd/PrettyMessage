@@ -51,7 +51,7 @@
                                     <barButtonItem title="Item" image="folder" catalog="system" width="83" style="plain" id="eTb-J9-xPb">
                                         <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="0.0" maxY="0.0"/>
                                     </barButtonItem>
-                                    <barButtonItem largeContentSizeImage="Image" width="83" style="plain" id="aJl-4l-sbu">
+                                    <barButtonItem image="fillButton" largeContentSizeImage="Image" width="83" style="plain" id="aJl-4l-sbu">
                                         <inset key="largeContentSizeImageInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
                                     </barButtonItem>
                                     <barButtonItem image="paintbrush" catalog="system" width="83" style="plain" id="mbf-UO-RwX"/>
@@ -106,6 +106,7 @@
     </scenes>
     <resources>
         <image name="Image" width="128" height="128"/>
+        <image name="fillButton" width="37.5" height="37.5"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="paintbrush" catalog="system" width="128" height="128"/>
         <image name="rectangle.3.offgrid" catalog="system" width="128" height="80"/>
