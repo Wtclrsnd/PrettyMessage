@@ -34,45 +34,6 @@ class ViewController: UIViewController {
         return textView
     }()
     
-    let first: UIStackView = {
-        var stack = UIStackView()
-        for i in Range(1 ... 6){
-            let image = UIView()
-            if i % 3 == 1{
-                image.backgroundColor = .red
-            }
-            else if i % 3 == 2{
-                image.backgroundColor = .blue
-            }
-            else{
-                image.backgroundColor = .green
-            }
-            stack.addArrangedSubview(image)
-        }
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    let second: UIStackView = {
-        var stack = UIStackView()
-        for i in Range(1 ... 6){
-            let media = UIView()
-            if i % 3 == 1{
-                media.backgroundColor = .purple
-            }
-            else if i % 3 == 2{
-                media.backgroundColor = .white
-            }
-            else{
-                media.backgroundColor = .gray
-            }
-            stack.addArrangedSubview(media)
-        }
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        return stack
-    }()
-     
     fileprivate let collectionViewOfOwnWorks: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -81,6 +42,7 @@ class ViewController: UIViewController {
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
+    
     fileprivate let collectionViewOfMakets: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -93,9 +55,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        first.distribution = .fillEqually
-        
         mainView.addSubview(labelYoursWorks)
         mainView.addSubview(collectionViewOfOwnWorks)
         mainView.addSubview(labelMaketsProduct)
@@ -161,7 +120,7 @@ extension UIView {
 
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
+        return CGSize(width: mainView.frame.width/3 - 10, height: collectionView.frame.width/3)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
