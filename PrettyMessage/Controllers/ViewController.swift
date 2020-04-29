@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
 
    
-    //MARK: - UI constants
+    //MARK: - UI layout
     let labelYoursWorks: UITextView = {
         let userHeaderLabel = UITextView()
         userHeaderLabel.text = "Your own works:"
@@ -73,6 +73,7 @@ class ViewController: UIViewController {
         collectionViewOfMakets.delegate = self
         collectionViewOfMakets.dataSource = self
         
+        //to layout funcs
         labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
         
         collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
