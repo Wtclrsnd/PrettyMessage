@@ -16,6 +16,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
 
    
+    //MARK: - viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //to layout funcs
+        mainView.addSubview(labelYoursWorks)
+        mainView.addSubview(collectionViewOfOwnWorks)
+        mainView.addSubview(labelMaketsProduct)
+        mainView.addSubview(collectionViewOfMakets)
+        
+        //leave it here
+        collectionViewOfOwnWorks.backgroundColor = .white
+        collectionViewOfMakets.backgroundColor = .white
+        collectionViewOfOwnWorks.delegate = self
+        collectionViewOfOwnWorks.dataSource = self
+        collectionViewOfMakets.delegate = self
+        collectionViewOfMakets.dataSource = self
+        
+        //to layout funcs after subview
+        labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
+        
+        collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
+        collectionViewOfOwnWorks.heightAnchor.constraint(equalToConstant: mainView.frame.height/5.5).isActive = true
+        
+        labelMaketsProduct.anchor(top: collectionViewOfOwnWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfMakets.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
+
+        collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
+
+        
+    }
+    
+    
     //MARK: - UI layout
     let labelYoursWorks: UITextView = {
         let userHeaderLabel = UITextView()
@@ -56,35 +87,7 @@ class ViewController: UIViewController {
     }()
     
 
-    //MARK: - viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //to layout funcs
-        mainView.addSubview(labelYoursWorks)
-        mainView.addSubview(collectionViewOfOwnWorks)
-        mainView.addSubview(labelMaketsProduct)
-        mainView.addSubview(collectionViewOfMakets)
-        
-        //leave it here
-        collectionViewOfOwnWorks.backgroundColor = .white
-        collectionViewOfMakets.backgroundColor = .white
-        collectionViewOfOwnWorks.delegate = self
-        collectionViewOfOwnWorks.dataSource = self
-        collectionViewOfMakets.delegate = self
-        collectionViewOfMakets.dataSource = self
-        
-        //to layout funcs
-        labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-        
-        collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
-        collectionViewOfOwnWorks.heightAnchor.constraint(equalToConstant: mainView.frame.height/5.5).isActive = true
-        
-        labelMaketsProduct.anchor(top: collectionViewOfOwnWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfMakets.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-
-        collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-
-        
-    }
+    
 
 
 }
