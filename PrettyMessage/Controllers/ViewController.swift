@@ -10,12 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
     //MARK: - outlets
     @IBOutlet weak var fillBucket: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var toolBar: UIToolbar!
 
    
+    
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +26,8 @@ class ViewController: UIViewController {
     }
     
     
-    //MARK: - UI layout
     
+    //MARK: - UI layout
     func addLayout() {
         //UserData CV
         let labelYoursWorks: UITextView = {
@@ -93,19 +96,12 @@ class ViewController: UIViewController {
         
         collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
     }
-    
-    
-    
-    
-    
-    
-
-    
-
 
 }
 
-//MARK: - adding constraints
+
+
+    //MARK: - adding constraints
 extension UIView {
     
     
@@ -140,7 +136,9 @@ extension UIView {
     }
 }
 
-//MARK:- CollectionView
+
+
+    //MARK:- CollectionView
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: mainView.frame.width/3 - 10, height: collectionView.frame.width/3)
