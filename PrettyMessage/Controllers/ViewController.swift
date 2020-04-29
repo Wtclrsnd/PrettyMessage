@@ -18,39 +18,41 @@ class ViewController: UIViewController {
    
     //MARK: - UI constants
     let labelYoursWorks: UITextView = {
-        let textView = UITextView()
-        textView.text = "Your own works:"
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont.boldSystemFont(ofSize: 20)
-        textView.isEditable = false
-        return textView
+        let userHeaderLabel = UITextView()
+        userHeaderLabel.text = "Your own works:"
+        userHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+        userHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        userHeaderLabel.isEditable = false
+        return userHeaderLabel
     }()
     
     let labelMaketsProduct: UITextView = {
-        let textView = UITextView()
-        textView.text = "Already done:"
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont.boldSystemFont(ofSize: 20)
-        textView.isEditable = false
-        return textView
+        let maketsHeaderLabel = UITextView()
+        maketsHeaderLabel.text = "Already done:"
+        maketsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+        maketsHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        maketsHeaderLabel.isEditable = false
+        return maketsHeaderLabel
     }()
     
     fileprivate let collectionViewOfOwnWorks: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        return cv
+        let userCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        userCollectionView.allowsSelection = true
+        userCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        userCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        return userCollectionView
     }()
     
     fileprivate let collectionViewOfMakets: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        return cv
+        let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        mainCollectionView.allowsSelection = true
+        mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        return mainCollectionView
     }()
     
 
