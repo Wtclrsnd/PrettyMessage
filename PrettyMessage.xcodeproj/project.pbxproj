@@ -10,12 +10,13 @@
 		4FA180A59836CD89B08EA4B8 /* Pods_PrettyMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */; };
 		722A29522454A84400C06F05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29512454A84400C06F05 /* AppDelegate.swift */; };
 		722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29532454A84400C06F05 /* SceneDelegate.swift */; };
-		722A29562454A84400C06F05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29552454A84400C06F05 /* ViewController.swift */; };
+		722A29562454A84400C06F05 /* mainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29552454A84400C06F05 /* mainCollectionViewController.swift */; };
 		722A29592454A84500C06F05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A29572454A84500C06F05 /* Main.storyboard */; };
 		722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */; };
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
 		728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC11E24589BF800C928C1 /* CoreDataManager.swift */; };
+		728EC1282459C20100C928C1 /* imageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC1272459C20100C928C1 /* imageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +25,14 @@
 		722A294E2454A84400C06F05 /* PrettyMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		722A29512454A84400C06F05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		722A29532454A84400C06F05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		722A29552454A84400C06F05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		722A29552454A84400C06F05 /* mainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainCollectionViewController.swift; sourceTree = "<group>"; };
 		722A29582454A84500C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		722A295B2454A84500C06F05 /* PrettyMessage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrettyMessage.xcdatamodel; sourceTree = "<group>"; };
 		722A295D2454A84800C06F05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		728EC11E24589BF800C928C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		728EC1272459C20100C928C1 /* imageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 		728EC1202458B7C800C928C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				722A29552454A84400C06F05 /* mainCollectionViewController.swift */,
 				722A295F2454A84800C06F05 /* LaunchScreen.storyboard */,
 				722A29572454A84500C06F05 /* Main.storyboard */,
 			);
@@ -106,6 +109,7 @@
 		728EC1212458B7E100C928C1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				728EC1272459C20100C928C1 /* imageCollectionViewCell.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -113,7 +117,6 @@
 		728EC1222458B80300C928C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				722A29552454A84400C06F05 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -253,8 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				722A29562454A84400C06F05 /* ViewController.swift in Sources */,
+				722A29562454A84400C06F05 /* mainCollectionViewController.swift in Sources */,
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
+				728EC1282459C20100C928C1 /* imageCollectionViewCell.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
