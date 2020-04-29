@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     
     
-    //MARK: - outlets
+    //MARK: - Outlets
     @IBOutlet weak var fillBucket: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     //MARK: - UI layout
     func addLayout() {
+        
         //UserData CV
         let labelYoursWorks: UITextView = {
         let userHeaderLabel = UITextView()
@@ -52,6 +53,8 @@ class ViewController: UIViewController {
         collectionViewOfOwnWorks.delegate = self
         collectionViewOfOwnWorks.dataSource = self
         collectionViewOfOwnWorks.backgroundColor = .white
+        
+        
         
         //Makets CV
         let labelMaketsProduct: UITextView = {
@@ -101,7 +104,7 @@ class ViewController: UIViewController {
 
 
 
-    //MARK: - adding constraints
+    //MARK: - Adding constraints
 extension UIView {
     
     
