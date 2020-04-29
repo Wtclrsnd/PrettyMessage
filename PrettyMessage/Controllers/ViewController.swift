@@ -19,72 +19,85 @@ class ViewController: UIViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        //to layout funcs
-        mainView.addSubview(labelYoursWorks)
-        mainView.addSubview(collectionViewOfOwnWorks)
-        mainView.addSubview(labelMaketsProduct)
-        mainView.addSubview(collectionViewOfMakets)
-        
-        //leave it here
-        collectionViewOfOwnWorks.backgroundColor = .white
-        collectionViewOfMakets.backgroundColor = .white
-        collectionViewOfOwnWorks.delegate = self
-        collectionViewOfOwnWorks.dataSource = self
-        collectionViewOfMakets.delegate = self
-        collectionViewOfMakets.dataSource = self
-        
-        //to layout funcs after subview
-        labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-        
-        collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
-        collectionViewOfOwnWorks.heightAnchor.constraint(equalToConstant: mainView.frame.height/5.5).isActive = true
-        
-        labelMaketsProduct.anchor(top: collectionViewOfOwnWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfMakets.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-
-        collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-
-        
+        addLayout()
     }
     
     
     //MARK: - UI layout
-    let labelYoursWorks: UITextView = {
+    
+    func addLayout() {
+        //UserData CV
+        let labelYoursWorks: UITextView = {
         let userHeaderLabel = UITextView()
         userHeaderLabel.text = "Your own works:"
         userHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         userHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
         userHeaderLabel.isEditable = false
         return userHeaderLabel
-    }()
+        }()
+        
+        let collectionViewOfOwnWorks: UICollectionView = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let userCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            userCollectionView.allowsSelection = true
+            userCollectionView.translatesAutoresizingMaskIntoConstraints = false
+            userCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+            return userCollectionView
+        }()
+        
+        collectionViewOfOwnWorks.delegate = self
+        collectionViewOfOwnWorks.dataSource = self
+        collectionViewOfOwnWorks.backgroundColor = .white
+        
+        //Makets CV
+        let labelMaketsProduct: UITextView = {
+            let maketsHeaderLabel = UITextView()
+            maketsHeaderLabel.text = "Layouts:"
+            maketsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+            maketsHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
+            maketsHeaderLabel.isEditable = false
+            return maketsHeaderLabel
+        }()
+        
+        let collectionViewOfMakets: UICollectionView = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            mainCollectionView.allowsSelection = true
+            mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
+            mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+            
+            return mainCollectionView
+        }()
+        
+        collectionViewOfMakets.backgroundColor = .white
+        collectionViewOfMakets.delegate = self
+        collectionViewOfMakets.dataSource = self
+        
+        
+        mainView.addSubview(labelMaketsProduct)
+        mainView.addSubview(collectionViewOfMakets)
+        mainView.addSubview(labelYoursWorks)
+        mainView.addSubview(collectionViewOfOwnWorks)
+        
+        //Constraints
+        labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
+        
+        collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
+        collectionViewOfOwnWorks.heightAnchor.constraint(equalToConstant: mainView.frame.height/5.5).isActive = true
+
+        
+        
+        labelMaketsProduct.anchor(top: collectionViewOfOwnWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfMakets.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
+        
+        collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
+    }
     
-    let labelMaketsProduct: UITextView = {
-        let maketsHeaderLabel = UITextView()
-        maketsHeaderLabel.text = "Already done:"
-        maketsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        maketsHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        maketsHeaderLabel.isEditable = false
-        return maketsHeaderLabel
-    }()
     
-    fileprivate let collectionViewOfOwnWorks: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let userCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        userCollectionView.allowsSelection = true
-        userCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        userCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        return userCollectionView
-    }()
     
-    fileprivate let collectionViewOfMakets: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        mainCollectionView.allowsSelection = true
-        mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        return mainCollectionView
-    }()
+    
+    
     
 
     
