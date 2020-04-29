@@ -97,6 +97,7 @@
 		728EC1202458B7C800C928C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				722A29552454A84400C06F05 /* ViewController.swift */,
 				722A295F2454A84800C06F05 /* LaunchScreen.storyboard */,
 				722A29572454A84500C06F05 /* Main.storyboard */,
 			);
@@ -113,7 +114,6 @@
 		728EC1222458B80300C928C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				722A29552454A84400C06F05 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

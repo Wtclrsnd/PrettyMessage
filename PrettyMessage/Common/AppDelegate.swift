@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  PrettyMessage
+//  lol
 //
-//  Created by Emil Shpeklord on 25.04.2020.
-//  Copyright © 2020 Бизнес в стиле .RU. All rights reserved.
+//  Created by Григорий Селезнев on 29.04.2020.
+//  Copyright © 2020 Григорий Селезнев. All rights reserved.
 //
 
 import UIKit
@@ -12,10 +12,8 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    м
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         return true
     }
 
@@ -42,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "PrettyMessage")
+        let container = NSPersistentContainer(name: "lol")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
