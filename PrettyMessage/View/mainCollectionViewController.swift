@@ -18,12 +18,13 @@ class mainCollectionViewController: UIViewController {
         mainCollectionView.dataSource = self
         addCollection()
     }
-
+    
     func addCollection() {
         let layout = UICollectionViewLayout()
         self.mainCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "imageCollectionViewCell")
+        mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "imageCell")
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mainCollectionView.allowsSelection = true
         
         view.addSubview(mainCollectionView)
     }
@@ -31,20 +32,27 @@ class mainCollectionViewController: UIViewController {
 }
 
  //MARK: - CollectionView
-extension mainCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension mainCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionViewCell", for: indexPath) as? imageCollectionViewCell {
+        if let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCollectionViewCell {
             imageCell.titleImage = UIImage(imageLiteralResourceName: "testImage")
             return imageCell
         }
         return UICollectionViewCell()
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4 //it depends on number of groups in Photo Collection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 140, height:100)
+    }
     
 }
 
