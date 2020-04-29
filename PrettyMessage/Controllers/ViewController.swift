@@ -10,12 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //MARK: - outlets
     @IBOutlet weak var fillBucket: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var toolBar: UIToolbar!
 
    
-    
+    //MARK: - UI constants
     let labelYoursWorks: UITextView = {
         let textView = UITextView()
         textView.text = "Your own works:"
@@ -53,13 +54,16 @@ class ViewController: UIViewController {
     }()
     
 
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        //to layout funcs
         mainView.addSubview(labelYoursWorks)
         mainView.addSubview(collectionViewOfOwnWorks)
         mainView.addSubview(labelMaketsProduct)
         mainView.addSubview(collectionViewOfMakets)
         
+        //leave it here
         collectionViewOfOwnWorks.backgroundColor = .white
         collectionViewOfMakets.backgroundColor = .white
         collectionViewOfOwnWorks.delegate = self
@@ -82,7 +86,7 @@ class ViewController: UIViewController {
 
 }
 
-
+//MARK: - adding constraints
 extension UIView {
     
     
@@ -117,7 +121,7 @@ extension UIView {
     }
 }
 
-
+//MARK:- CollectionView
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: mainView.frame.width/3 - 10, height: collectionView.frame.width/3)
