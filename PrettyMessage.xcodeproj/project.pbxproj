@@ -16,6 +16,8 @@
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
 		728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC11E24589BF800C928C1 /* CoreDataManager.swift */; };
+		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
+		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		728EC11E24589BF800C928C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
+		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +110,7 @@
 		728EC1212458B7E100C928C1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				728EC12F245B6F7900C928C1 /* imageCell.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -113,6 +118,7 @@
 		728EC1222458B80300C928C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				728EC12D245B264700C928C1 /* drawViewController.swift */,
 				722A29552454A84400C06F05 /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -255,9 +261,11 @@
 			files = (
 				722A29562454A84400C06F05 /* ViewController.swift in Sources */,
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
+				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
+				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
