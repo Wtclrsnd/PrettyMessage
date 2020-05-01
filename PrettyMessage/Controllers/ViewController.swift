@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     //MARK: - variables
     var mainCollectionView: UICollectionView!
     
-    
+    //photo source must look like var CodableDict = [header1:[images], header2:[images]...]  String:[UIView]
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -49,6 +49,8 @@ class ViewController: UIViewController {
         mainCollectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
     }
     
+    
+    //MARK: - Creating compositional layout
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
             let section = sectionIndex //нужно изменить это все под получаемые данные как в видосе таймкод 18:28
@@ -78,6 +80,49 @@ class ViewController: UIViewController {
         
     }
 }
+
+
+    //MARK: -  Camera and Library actions
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBAction func useUserPhoto(_ sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    
+    
+    @IBAction func takeAPhoto(_ sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .camera
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Camera is unavilable!", message: nil, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        
+        let _ = image //this is an image for segue
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+//this code is useful in layout bro
+//
 //        //UserData CV
 //        let labelYoursWorks: UITextView = {
 //        let userHeaderLabel = UITextView()
@@ -191,6 +236,7 @@ extension UIView {
 }
 
     //MARK:- CollectionView
+//this shit must go down after adding network. Diffable Data Source will replace it
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
