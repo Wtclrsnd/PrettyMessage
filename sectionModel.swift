@@ -11,6 +11,6 @@ import UIKit
 
 struct sectionModel: Hashable {
     let type: String
-    let label: String
+    let header: String
     let items: [itemModel]
 }

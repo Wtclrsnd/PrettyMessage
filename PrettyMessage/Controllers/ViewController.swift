@@ -18,6 +18,7 @@ class ViewController: UIViewController {
    
     //MARK: - variables
     var mainCollectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<sectionModel, itemModel>?
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -36,8 +37,8 @@ class ViewController: UIViewController {
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
         
-//        mainCollectionView.delegate = self
-//        mainCollectionView.dataSource = self
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
         
         view.addSubview(mainCollectionView)
         
@@ -53,13 +54,14 @@ class ViewController: UIViewController {
             
             switch section{
             default:
-                return self.createAppSection()
+                //editing header of section
+                return self.createDataSection()
             }
         }
         return layout
     }
     
-    func createAppSection() -> NSCollectionLayoutSection{
+    func createDataSection() -> NSCollectionLayoutSection{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.326), heightDimension: .fractionalHeight((view.frame.width - 30)/3))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -76,8 +78,23 @@ class ViewController: UIViewController {
         
     }
     
+    //MARK: - UICollectionViewDiffableDataSourse
     func createDataSource() {
-            
+        dataSource = UICollectionViewDiffableDataSource<sectionModel, itemModel>(collectionView: mainCollectionView, cellProvider: { (mainCollectionView, indexPath, item) -> UICollectionViewCell? in
+            switch self.numberOfSections(in: mainCollectionView){
+                
+            default:
+                return UICollectionViewCell()
+            }
+        })
+    }
+    
+    
+    
+    //MARK: - Actions
+    
+    
+    @IBAction func cam(_ sender: UIBarButtonItem) {
     }
 }
 //        //UserData CV
@@ -193,23 +210,23 @@ extension UIView {
 }
 
     //MARK:- CollectionView
-//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        6 //работы пользователя и 5 групп фото
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        6
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-//            cell.image.image = UIImage(named: "Picture")
-//
-//            return cell
-//        }
-//        return UICollectionViewCell()
-//    }
-//
-//}
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        6 //работы пользователя и 5 групп фото
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        6
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
+            cell.image.image = UIImage(named: "Picture")
+
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+
+}
