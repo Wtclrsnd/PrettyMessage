@@ -41,7 +41,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Шаблоны" largeTitleDisplayMode="always" id="zeY-Zm-Ub9">
                         <barButtonItem key="leftBarButtonItem" width="70" systemItem="search" id="ENU-xr-k6L"/>
-                        <barButtonItem key="rightBarButtonItem" width="70" systemItem="camera" id="7KF-ff-HUY"/>
+                        <barButtonItem key="rightBarButtonItem" width="70" systemItem="camera" id="7KF-ff-HUY">
+                            <connections>
+                                <action selector="cam:" destination="BYZ-38-t0r" id="06A-6K-Izv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
