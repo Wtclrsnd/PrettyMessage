@@ -18,6 +18,8 @@
 		728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC11E24589BF800C928C1 /* CoreDataManager.swift */; };
 		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
+		C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C69D245C738600B2C9D5 /* itemModel.swift */; };
+		C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C69F245C73BD00B2C9D5 /* sectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		728EC11E24589BF800C928C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
+		C364C69D245C738600B2C9D5 /* itemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemModel.swift; sourceTree = "<group>"; };
+		C364C69F245C73BD00B2C9D5 /* sectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionModel.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,8 @@
 			children = (
 				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
+				C364C69D245C738600B2C9D5 /* itemModel.swift */,
+				C364C69F245C73BD00B2C9D5 /* sectionModel.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -264,8 +270,10 @@
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
+				C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
 				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
+				C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

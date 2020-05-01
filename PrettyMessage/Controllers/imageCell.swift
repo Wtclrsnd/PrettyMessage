@@ -20,7 +20,11 @@ class imageCell: UICollectionViewCell {
         backgroundColor = .purple
         self.clipsToBounds = true
         addSubview(image)
-        
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        image.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        image.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {

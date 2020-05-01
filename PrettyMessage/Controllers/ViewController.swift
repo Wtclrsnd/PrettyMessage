@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     //MARK: - variables
     var mainCollectionView: UICollectionView!
     
-    
-    
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +36,8 @@ class ViewController: UIViewController {
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
         
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
+//        mainCollectionView.delegate = self
+//        mainCollectionView.dataSource = self
         
         view.addSubview(mainCollectionView)
         
@@ -76,6 +74,10 @@ class ViewController: UIViewController {
         
         return section
         
+    }
+    
+    func createDataSource() {
+            
     }
 }
 //        //UserData CV
@@ -191,22 +193,23 @@ extension UIView {
 }
 
     //MARK:- CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        6 //работы пользователя и 5 групп фото
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-            cell.image.image = UIImage(contentsOfFile: "Picture")
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
-}
+//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        6 //работы пользователя и 5 групп фото
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        6
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
+//            cell.image.image = UIImage(named: "Picture")
+//
+//            return cell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//}
