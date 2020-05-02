@@ -13,6 +13,8 @@
 		574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC854245DA04F00352E69 /* TestViewModel.swift */; };
 		574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC856245DA06B00352E69 /* TestViewModelProtocol.swift */; };
 		574DC859245DA07B00352E69 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC858245DA07B00352E69 /* Target.swift */; };
+		722906D5245DE8C700069685 /* section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722906D4245DE8C700069685 /* section.swift */; };
+		722906D7245E07F600069685 /* source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722906D6245E07F600069685 /* source.swift */; };
 		722A29522454A84400C06F05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29512454A84400C06F05 /* AppDelegate.swift */; };
 		722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29532454A84400C06F05 /* SceneDelegate.swift */; };
 		722A29562454A84400C06F05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29552454A84400C06F05 /* ViewController.swift */; };
@@ -20,7 +22,6 @@
 		722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */; };
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
-		728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC11E24589BF800C928C1 /* CoreDataManager.swift */; };
 		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
 		C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C69D245C738600B2C9D5 /* itemModel.swift */; };
@@ -35,6 +36,8 @@
 		574DC856245DA06B00352E69 /* TestViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModelProtocol.swift; sourceTree = SOURCE_ROOT; };
 		574DC858245DA07B00352E69 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		62325548F1B77FFAC3DBF853 /* Pods-PrettyMessage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrettyMessage.debug.xcconfig"; path = "Target Support Files/Pods-PrettyMessage/Pods-PrettyMessage.debug.xcconfig"; sourceTree = "<group>"; };
+		722906D4245DE8C700069685 /* section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = section.swift; path = PrettyMessage/Controllers/section.swift; sourceTree = "<group>"; };
+		722906D6245E07F600069685 /* source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = source.swift; path = PrettyMessage/Controllers/source.swift; sourceTree = "<group>"; };
 		722A294E2454A84400C06F05 /* PrettyMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		722A29512454A84400C06F05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		722A29532454A84400C06F05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +47,6 @@
 		722A295D2454A84800C06F05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		728EC11E24589BF800C928C1 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
 		C364C69D245C738600B2C9D5 /* itemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemModel.swift; sourceTree = "<group>"; };
@@ -145,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
-				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
+				722906D4245DE8C700069685 /* section.swift */,
+				722906D6245E07F600069685 /* source.swift */,
 				C364C69D245C738600B2C9D5 /* itemModel.swift */,
 				C364C69F245C73BD00B2C9D5 /* sectionModel.swift */,
 				574DC852245D9FC400352E69 /* FrameModel.swift */,
@@ -287,11 +290,12 @@
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
-				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
+				722906D7245E07F600069685 /* source.swift in Sources */,
 				574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */,
 				C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
 				574DC853245D9FC400352E69 /* FrameModel.swift in Sources */,
+				722906D5245DE8C700069685 /* section.swift in Sources */,
 				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
 				C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */,
 			);

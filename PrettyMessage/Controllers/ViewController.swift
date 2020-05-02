@@ -15,24 +15,30 @@ class ViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    private var viewModel = TestViewModel()
-
-   
     //MARK: - variables
     var mainCollectionView: UICollectionView!
-    
+    private var viewModel = TestViewModel()
+
     //photo source - FramesModel.swift
+    
+    
+    //var photo = source(raw: viewModel.framesModel)
+    //это невозможно сделать тк массив данных опционален. минус 5 часов жизни в никуда
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addLayout()
+        
         navigationController?.toolbar.isUserInteractionEnabled = true
+        
         viewModel.onGetting = { [weak self] in
             self?.mainCollectionView.reloadData()
         }
         viewModel.grabData()
     }
+    
     
     //MARK: - UI layout
     func addLayout() {
@@ -54,6 +60,7 @@ class ViewController: UIViewController {
     
     
     //MARK: - Creating compositional layout
+    
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
             let section = sectionIndex //нужно изменить это все под получаемые данные как в видосе таймкод 18:28
@@ -243,20 +250,20 @@ extension UIView {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        6 //работы пользователя и 5 групп фото
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        return viewModel.framesModel?.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-            cell.image.image = UIImage(contentsOfFile: "Picture")
             if let myUrl = viewModel.framesModel?[indexPath.row].uri {
                 if let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
                     let urlencoded = URL(string: encoded)
                     cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+            cell.backgroundColor = .purple
                 }
             }
             return cell

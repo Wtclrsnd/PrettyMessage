@@ -17,7 +17,7 @@ class imageCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .purple
+        backgroundColor = .gray
         self.clipsToBounds = true
         addSubview(image)
         image.translatesAutoresizingMaskIntoConstraints = false
