@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - Dip (7.1.1)
+  - iOSPhotoEditor (1.0.0)
   - Kingfisher (4.10.1)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Dip
+  - iOSPhotoEditor (~> 1.0)
   - Kingfisher
   - Moya
 
@@ -18,6 +20,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Dip
+    - iOSPhotoEditor
     - Kingfisher
     - Moya
     - Result
@@ -25,10 +28,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Dip: 6bebb09d50f88633039ce2c9fe5bc56d387b492f
+  iOSPhotoEditor: 2951f35246a31dcb428b6292248a9c065582d03e
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: eaa4df841f4b03ef474db9440b4b39ce37688e3c
+PODFILE CHECKSUM: 0adacd8322a9a0dc59bd2e35f0e37414adb487ca
 
 COCOAPODS: 1.9.1

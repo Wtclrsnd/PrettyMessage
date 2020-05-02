@@ -7,5 +7,6 @@ target 'PrettyMessage' do
   pod 'Moya'
   pod 'Kingfisher'
   pod 'Dip'
+  pod 'iOSPhotoEditor', '~> 1.0'
 
 end

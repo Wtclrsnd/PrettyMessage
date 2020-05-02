@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
 
    
-    //MARK: - variables
+    //MARK: - Variables
     var mainCollectionView: UICollectionView!
     
     //photo source must look like var CodableDict = [header1:[images], header2:[images]...]  String:[UIView]
