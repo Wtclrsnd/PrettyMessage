@@ -14,22 +14,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var fillBucket: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var toolBar: UIToolbar!
+    
+    private var viewModel = TestViewModel()
 
    
     //MARK: - variables
     var mainCollectionView: UICollectionView!
     
-    //photo source must look like var CodableDict = [header1:[images], header2:[images]...]  String:[UIView]
+    //photo source - FramesModel.swift
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         addLayout()
         navigationController?.toolbar.isUserInteractionEnabled = true
-        
+        viewModel.onGetting = { [weak self] in
+            self?.mainCollectionView.reloadData()
+        }
+        viewModel.grabData()
     }
-    
-    
     
     //MARK: - UI layout
     func addLayout() {
@@ -250,6 +253,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
             cell.image.image = UIImage(contentsOfFile: "Picture")
+            if let myUrl = viewModel.framesModel?[indexPath.row].uri {
+                if let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
+                    let urlencoded = URL(string: encoded)
+                    cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+                }
+            }
             return cell
         }
         return UICollectionViewCell()

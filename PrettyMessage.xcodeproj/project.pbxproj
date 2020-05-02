@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4FA180A59836CD89B08EA4B8 /* Pods_PrettyMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */; };
+		574DC851245D9C3600352E69 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC850245D9C3600352E69 /* TestViewController.swift */; };
+		574DC853245D9FC400352E69 /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC852245D9FC400352E69 /* FrameModel.swift */; };
+		574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC854245DA04F00352E69 /* TestViewModel.swift */; };
+		574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC856245DA06B00352E69 /* TestViewModelProtocol.swift */; };
+		574DC859245DA07B00352E69 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DC858245DA07B00352E69 /* Target.swift */; };
 		722A29522454A84400C06F05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29512454A84400C06F05 /* AppDelegate.swift */; };
 		722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29532454A84400C06F05 /* SceneDelegate.swift */; };
 		722A29562454A84400C06F05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722A29552454A84400C06F05 /* ViewController.swift */; };
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		525009306727C0AC33F59B81 /* Pods-PrettyMessage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrettyMessage.release.xcconfig"; path = "Target Support Files/Pods-PrettyMessage/Pods-PrettyMessage.release.xcconfig"; sourceTree = "<group>"; };
+		574DC850245D9C3600352E69 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		574DC852245D9FC400352E69 /* FrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
+		574DC854245DA04F00352E69 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = SOURCE_ROOT; };
+		574DC856245DA06B00352E69 /* TestViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModelProtocol.swift; sourceTree = SOURCE_ROOT; };
+		574DC858245DA07B00352E69 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		62325548F1B77FFAC3DBF853 /* Pods-PrettyMessage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrettyMessage.debug.xcconfig"; path = "Target Support Files/Pods-PrettyMessage/Pods-PrettyMessage.debug.xcconfig"; sourceTree = "<group>"; };
 		722A294E2454A84400C06F05 /* PrettyMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		722A29512454A84400C06F05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				728EC12F245B6F7900C928C1 /* imageCell.swift */,
+				574DC854245DA04F00352E69 /* TestViewModel.swift */,
+				574DC856245DA06B00352E69 /* TestViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -124,6 +136,7 @@
 			children = (
 				728EC12D245B264700C928C1 /* drawViewController.swift */,
 				722A29552454A84400C06F05 /* ViewController.swift */,
+				574DC850245D9C3600352E69 /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +148,7 @@
 				728EC11E24589BF800C928C1 /* CoreDataManager.swift */,
 				C364C69D245C738600B2C9D5 /* itemModel.swift */,
 				C364C69F245C73BD00B2C9D5 /* sectionModel.swift */,
+				574DC852245D9FC400352E69 /* FrameModel.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -146,6 +160,7 @@
 				722A29512454A84400C06F05 /* AppDelegate.swift */,
 				722A29532454A84400C06F05 /* SceneDelegate.swift */,
 				722A295D2454A84800C06F05 /* Assets.xcassets */,
+				574DC858245DA07B00352E69 /* Target.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -265,13 +280,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574DC851245D9C3600352E69 /* TestViewController.swift in Sources */,
 				722A29562454A84400C06F05 /* ViewController.swift in Sources */,
+				574DC859245DA07B00352E69 /* Target.swift in Sources */,
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
+				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				728EC11F24589BF800C928C1 /* CoreDataManager.swift in Sources */,
+				574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */,
 				C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
+				574DC853245D9FC400352E69 /* FrameModel.swift in Sources */,
 				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
 				C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */,
 			);
@@ -349,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -419,8 +439,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P99KL2FGYB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,8 +459,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P99KL2FGYB;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
