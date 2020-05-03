@@ -18,12 +18,9 @@ class ViewController: UIViewController {
     //MARK: - variables
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
+    private var src = source()
 
     //photo source - FramesModel.swift
-    
-    
-    //var photo = source(raw: viewModel.framesModel)
-    //это невозможно сделать тк массив данных опционален. минус 5 часов жизни в никуда
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -33,12 +30,25 @@ class ViewController: UIViewController {
         
         navigationController?.toolbar.isUserInteractionEnabled = true
         
-        viewModel.onGetting = { [weak self] in
-            self?.mainCollectionView.reloadData()
+        viewModel.onGetting = {
+            if (self.viewModel.framesModel != nil) {
+                self.src = self.makingSource(raw: self.viewModel.framesModel!)! 
+            }
+            self.mainCollectionView.reloadData()
         }
         viewModel.grabData()
+        
+        
     }
     
+    func makingSource(raw: FramesModel?) -> source?{
+        if raw == nil {
+            return nil
+        } else {
+            let src = source(raw: raw!)
+            return src
+        }
+    }
     
     //MARK: - UI layout
     func addLayout() {
@@ -250,22 +260,20 @@ extension UIView {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return src.sections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.framesModel?.count ?? 1
+        return src.sections[section].content.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-            if let myUrl = viewModel.framesModel?[indexPath.row].uri {
-                if let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
-                    let urlencoded = URL(string: encoded)
-                    cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+            let myUrl = src.sections[indexPath.section].content[indexPath.row].uri
+            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+            let urlencoded = URL(string: encoded)
+            cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
             cell.backgroundColor = .purple
-                }
-            }
             return cell
         }
         return UICollectionViewCell()

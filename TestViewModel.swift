@@ -17,6 +17,8 @@ class TestViewModel: TestViewModelProtocol {
     
     private let provider = MoyaProvider<Target>()
     
+    
+    
     func grabData() {
         _ = provider.rx.request(.frames)
             .filterSuccessfulStatusCodes()
