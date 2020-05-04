@@ -9,11 +9,20 @@
 import Foundation
 
 //часть необходимой для работы структуры данных
-struct section{
+struct section {
     var header = String()
     var content = [FrameModel]()
     
     init(header: String) {
         self.header = header
     }
+}
+
+extension section: Hashable {
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(header)
+        hasher.combine(content)
+    }
+    
 }

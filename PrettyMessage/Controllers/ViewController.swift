@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
     private var src = source()
+    
+    private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
 
     //photo source - FramesModel.swift
     
@@ -28,17 +30,15 @@ class ViewController: UIViewController {
         
         addLayout()
         
-        navigationController?.toolbar.isUserInteractionEnabled = true
+        createDataSource()
         
         viewModel.onGetting = {
             if (self.viewModel.framesModel != nil) {
-                self.src = self.makingSource(raw: self.viewModel.framesModel!)! 
+                self.src = self.makingSource(raw: self.viewModel.framesModel!)!
             }
-            self.mainCollectionView.reloadData()
+            self.reloadData()
         }
         viewModel.grabData()
-        
-        
     }
     
     func makingSource(raw: FramesModel?) -> source?{
@@ -57,8 +57,8 @@ class ViewController: UIViewController {
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
         
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
+//        mainCollectionView.delegate = self
+//        mainCollectionView.dataSource = self
         
         view.addSubview(mainCollectionView)
         
@@ -69,13 +69,38 @@ class ViewController: UIViewController {
     }
     
     
+    //MARK: - DiffableDataSource
+    func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<section, FrameModel>(collectionView: mainCollectionView, cellProvider: { (mainCollectionView, indexPath, image) -> UICollectionViewCell? in
+        switch self.src.sections[indexPath.section].header {
+        default:
+                let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell
+                let myUrl = self.src.sections[indexPath.section].content[indexPath.row].uri
+                    let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+                    let urlencoded = URL(string: encoded)
+                    cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+                return cell
+            }
+        })
+    }
+    
+    func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
+        snapshot.appendSections(src.sections)
+        
+        for sect in src.sections {
+            snapshot.appendItems(sect.content, toSection: sect)
+        }
+        
+        dataSource?.apply(snapshot)
+    }
     //MARK: - Creating compositional layout
     
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
-            let section = sectionIndex //нужно изменить это все под получаемые данные как в видосе таймкод 18:28
+            let section = self.src.sections[sectionIndex] //нужно изменить это все под получаемые данные как в видосе таймкод 18:28
             
-            switch section{
+            switch section.header{
             default:
                 return self.createAppSection()
             }
@@ -257,26 +282,26 @@ extension UIView {
 
     //MARK:- CollectionView
 //this shit must go down after adding network. Diffable Data Source will replace it
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return src.sections.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return src.sections[section].content.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-            let myUrl = src.sections[indexPath.section].content[indexPath.row].uri
-            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
-            let urlencoded = URL(string: encoded)
-            cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
-            cell.backgroundColor = .purple
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
-}
+//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return src.sections.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return src.sections[section].content.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
+//            let myUrl = src.sections[indexPath.section].content[indexPath.row].uri
+//            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+//            let urlencoded = URL(string: encoded)
+//            cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+//            cell.backgroundColor = .purple
+//            return cell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//}

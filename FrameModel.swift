@@ -9,9 +9,14 @@
 import Foundation
 
 // MARK: - FrameModel
-struct FrameModel: Codable {
+struct FrameModel: Codable, Hashable {
     let category: String
     let uri: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(category)
+        hasher.combine(uri)
+    }
 }
 
 typealias FramesModel = [FrameModel]
