@@ -100,6 +100,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: - Snapshots
     func reloadData() {
         var fullSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
         fullSnapshot.appendSections(src.sections)
