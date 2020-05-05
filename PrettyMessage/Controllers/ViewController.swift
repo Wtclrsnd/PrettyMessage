@@ -101,14 +101,25 @@ class ViewController: UIViewController {
     }
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
-        snapshot.appendSections(src.sections)
+        var fullSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
+        fullSnapshot.appendSections(src.sections)
         
         for sect in src.sections {
-            snapshot.appendItems(sect.content, toSection: sect)
+            fullSnapshot.appendItems(sect.content, toSection: sect)
         }
         
-        dataSource?.apply(snapshot)
+        var cutSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
+        cutSnapshot.appendSections(src.sections)
+        
+        for sect in src.sections {
+            if sect.content.count < 6 {
+                cutSnapshot.appendItems(sect.content, toSection: sect)
+            } else {
+                let content = [sect.content[0], sect.content[1], sect.content[2], sect.content[3], sect.content[4], sect.content[5]]
+                cutSnapshot.appendItems(content, toSection: sect)
+            }
+        }
+        dataSource?.apply(cutSnapshot, animatingDifferences: true)
     }
     
     
@@ -117,7 +128,7 @@ class ViewController: UIViewController {
     
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
-            let section = self.src.sections[sectionIndex] //нужно изменить это все под получаемые данные как в видосе таймкод 18:28
+            let section = self.src.sections[sectionIndex]
             
             switch section.header{
             default:
