@@ -14,40 +14,29 @@ struct source{
     //making all data to structured
     init(raw: FramesModel){
         var sects = [section]()
-        let headers = ["Цели", "Бизнес", "Деньги", "Лист", "Пасха", "Рамки", "Свитки", "Цветы", "Абстракция"]
+        var headers = [String]()
+        
+        for head in raw{
+            if !headers.contains(head.category){
+                headers.append(head.category)
+            }
+        }
         
         for name in headers{
             sects.append(section(header: name))
         }
         
         for head in raw{
-            switch head.category {
-            case "Цели":
-                sects[0].content.append(head)
-            case "Бизнес":
-                sects[1].content.append(head)
-            case "Деньги":
-                sects[2].content.append(head)
-            case "Лист":
-                sects[3].content.append(head)
-            case "Пасха":
-                sects[4].content.append(head)
-            case "Рамки":
-                sects[5].content.append(head)
-            case "Свитки":
-                sects[6].content.append(head)
-            case "Цветы":
-                sects[7].content.append(head)
-            case "Абстракция":
-                sects[8].content.append(head)
-            default:
-                continue
+            for i in 0...(sects.count-1){
+                if head.category == sects[i].header{
+                    sects[i].content.append(head)
+                }
             }
         }
+        
+        
         self.sections = sects
     }
     
-    init(){
-        
-    }
+    init(){}
 }
