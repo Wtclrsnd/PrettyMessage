@@ -101,7 +101,8 @@ class ViewController: UIViewController {
     }
     
     //MARK: - Snapshots
-    func reloadData() {
+    
+    func fullSnap() -> NSDiffableDataSourceSnapshot<section, FrameModel> {
         var fullSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
         fullSnapshot.appendSections(src.sections)
         
@@ -109,6 +110,10 @@ class ViewController: UIViewController {
             fullSnapshot.appendItems(sect.content, toSection: sect)
         }
         
+        return fullSnapshot
+    }
+    
+    func cutSnap() -> NSDiffableDataSourceSnapshot<section, FrameModel> {
         var cutSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
         cutSnapshot.appendSections(src.sections)
         
@@ -120,6 +125,12 @@ class ViewController: UIViewController {
                 cutSnapshot.appendItems(content, toSection: sect)
             }
         }
+        
+        return cutSnapshot
+    }
+    
+    func reloadData() {
+        let cutSnapshot = cutSnap()
         dataSource?.apply(cutSnapshot, animatingDifferences: true)
     }
     
