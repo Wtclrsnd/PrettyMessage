@@ -1,3 +1,4 @@
 # PrettyMessage
 
-pod install
+$pod install
+in this repository
