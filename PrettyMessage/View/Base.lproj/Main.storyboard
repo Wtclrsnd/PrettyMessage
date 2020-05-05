@@ -94,21 +94,6 @@
             </objects>
             <point key="canvasLocation" x="-268" y="-101"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="pYi-8a-Srb">
-            <objects>
-                <viewController id="Dm1-hd-41q" customClass="ViewController" customModule="PrettyMessage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bNP-BO-diK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="Gho-7P-7iF"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hzS-Pv-qxF" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="135" y="569"/>
-        </scene>
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="128" height="95"/>

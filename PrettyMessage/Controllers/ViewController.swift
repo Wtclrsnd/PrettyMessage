@@ -56,9 +56,8 @@ class ViewController: UIViewController {
         mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
-        
-//        mainCollectionView.delegate = self
-//        mainCollectionView.dataSource = self
+        mainCollectionView.allowsSelection = true
+        mainCollectionView.isUserInteractionEnabled = true
         
         view.addSubview(mainCollectionView)
         
@@ -66,7 +65,9 @@ class ViewController: UIViewController {
         
         
         mainCollectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
+        mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
     }
+    
     
     
     //MARK: - DiffableDataSource
@@ -82,6 +83,20 @@ class ViewController: UIViewController {
                 return cell
             }
         })
+        
+        dataSource?.supplementaryViewProvider = {
+            (mainCollectionView, kind, indexPath) in
+            guard let sectionHeader = mainCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
+                else {return nil}
+            
+            guard let image = self.dataSource?.itemIdentifier(for: indexPath) else {return nil}
+            guard let section = self.dataSource?.snapshot().sectionIdentifier(containingItem: image) else {return nil}
+            if section.header.isEmpty {
+                return nil
+            }
+            sectionHeader.title.text = section.header
+            return sectionHeader
+        }
     }
     
     func reloadData() {
@@ -94,7 +109,10 @@ class ViewController: UIViewController {
         
         dataSource?.apply(snapshot)
     }
-    //MARK: - Creating compositional layout
+    
+    
+    
+    //MARK: - СompositionalLayout
     
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnviroment) -> NSCollectionLayoutSection? in
@@ -119,13 +137,24 @@ class ViewController: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 30, leading: 10, bottom: 0, trailing: 10) //
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 7, bottom: 30, trailing: 7)
+        
+        let header = createHeader()
+        section.boundarySupplementaryItems = [header]
         
         return section
-        
     }
+    
+    func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: size, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        return sectionHeader
+    }
+    
 }
-
 
     //MARK: -  Camera and Library actions
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -166,85 +195,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
 }
 
-//this code is useful in layout bro
-//
-//        //UserData CV
-//        let labelYoursWorks: UITextView = {
-//        let userHeaderLabel = UITextView()
-//        userHeaderLabel.text = "Your own works:"
-//        userHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-//        userHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
-//        userHeaderLabel.isEditable = false
-//        return userHeaderLabel
-//        }()
-//
-//        let collectionViewOfOwnWorks: UICollectionView = {
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .horizontal
-//            layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-//            let userCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//            userCollectionView.allowsSelection = true
-//            userCollectionView.translatesAutoresizingMaskIntoConstraints = false
-//            userCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-//            return userCollectionView
-//        }()
-//
-//        collectionViewOfOwnWorks.delegate = self
-//        collectionViewOfOwnWorks.dataSource = self
-//        collectionViewOfOwnWorks.backgroundColor = .white
-//
-//
-//
-//        //Makets CV
-//        let labelMaketsProduct: UITextView = {
-//            let maketsHeaderLabel = UITextView()
-//            maketsHeaderLabel.text = "Layouts:"
-//            maketsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-//            maketsHeaderLabel.font = UIFont.boldSystemFont(ofSize: 20)
-//            maketsHeaderLabel.isEditable = false
-//            return maketsHeaderLabel
-//        }()
-//
-//
-//        let collectionViewOfMakets: UICollectionView = {
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .vertical
-//            layout.sectionInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-//            let mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//            mainCollectionView.allowsSelection = true
-//            mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
-//            mainCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-//
-//            return mainCollectionView
-//        }()
-//
-//        collectionViewOfMakets.backgroundColor = .white
-//        collectionViewOfMakets.delegate = self
-//        collectionViewOfMakets.dataSource = self
-//
-//
-//        mainView.addSubview(labelMaketsProduct)
-//        mainView.addSubview(collectionViewOfMakets)
-//        mainView.addSubview(labelYoursWorks)
-//        mainView.addSubview(collectionViewOfOwnWorks)
-//
-//        //Constraints
-//        labelYoursWorks.anchor(top: mainView.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfOwnWorks.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-//
-//        collectionViewOfOwnWorks.anchor(top: labelYoursWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: labelMaketsProduct.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 20, right: 5))
-//        collectionViewOfOwnWorks.heightAnchor.constraint(equalToConstant: mainView.frame.height/5.5).isActive = true
-//
-//
-//
-//        labelMaketsProduct.anchor(top: collectionViewOfOwnWorks.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: collectionViewOfMakets.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 10, left: 5, bottom: 0, right: 5), size: .init(width: 100, height: 50))
-//
-//        collectionViewOfMakets.anchor(top: labelMaketsProduct.bottomAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-//    }
-//
-//}
-//
-//
-//
+
 //    //MARK: - UIView Extension
 extension UIView {
 
@@ -279,29 +230,3 @@ extension UIView {
         }
     }
 }
-
-    //MARK:- CollectionView
-//this shit must go down after adding network. Diffable Data Source will replace it
-//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return src.sections.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return src.sections[section].content.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell{
-//            let myUrl = src.sections[indexPath.section].content[indexPath.row].uri
-//            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
-//            let urlencoded = URL(string: encoded)
-//            cell.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
-//            cell.backgroundColor = .purple
-//            return cell
-//        }
-//        return UICollectionViewCell()
-//    }
-//
-//}

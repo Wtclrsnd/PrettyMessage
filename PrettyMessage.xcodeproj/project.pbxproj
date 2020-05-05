@@ -22,10 +22,9 @@
 		722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */; };
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
+		722C20F02460CD250029AC93 /* headerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C20EF2460CD250029AC93 /* headerModel.swift */; };
 		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
-		C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C69D245C738600B2C9D5 /* itemModel.swift */; };
-		C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C364C69F245C73BD00B2C9D5 /* sectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,10 +46,9 @@
 		722A295D2454A84800C06F05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		722C20EF2460CD250029AC93 /* headerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerModel.swift; sourceTree = "<group>"; };
 		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
-		C364C69D245C738600B2C9D5 /* itemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemModel.swift; sourceTree = "<group>"; };
-		C364C69F245C73BD00B2C9D5 /* sectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectionModel.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,9 +147,8 @@
 				722A295A2454A84500C06F05 /* PrettyMessage.xcdatamodeld */,
 				722906D4245DE8C700069685 /* section.swift */,
 				722906D6245E07F600069685 /* source.swift */,
-				C364C69D245C738600B2C9D5 /* itemModel.swift */,
-				C364C69F245C73BD00B2C9D5 /* sectionModel.swift */,
 				574DC852245D9FC400352E69 /* FrameModel.swift */,
+				722C20EF2460CD250029AC93 /* headerModel.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -289,15 +286,14 @@
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
+				722C20F02460CD250029AC93 /* headerModel.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				722906D7245E07F600069685 /* source.swift in Sources */,
 				574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */,
-				C364C69E245C738600B2C9D5 /* itemModel.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
 				574DC853245D9FC400352E69 /* FrameModel.swift in Sources */,
 				722906D5245DE8C700069685 /* section.swift in Sources */,
 				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
-				C364C6A0245C73BD00B2C9D5 /* sectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
