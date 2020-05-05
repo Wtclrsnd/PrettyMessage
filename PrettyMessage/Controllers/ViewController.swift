@@ -37,6 +37,7 @@ class ViewController: UIViewController {
                 self.src = self.makingSource(raw: self.viewModel.framesModel!)!
             }
             self.reloadData()
+            self.viewModel.framesModel?.removeAll()
         }
         viewModel.grabData()
     }
