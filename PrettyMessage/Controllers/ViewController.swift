@@ -36,7 +36,7 @@ class ViewController: UIViewController {
             if (self.viewModel.framesModel != nil) {
                 self.src = self.makingSource(raw: self.viewModel.framesModel!)!
             }
-            self.reloadData()
+            self.cutSnap()
             self.viewModel.framesModel?.removeAll()
         }
         viewModel.grabData()
@@ -102,18 +102,24 @@ class ViewController: UIViewController {
     
     //MARK: - Snapshots
     
-    func fullSnap() -> NSDiffableDataSourceSnapshot<section, FrameModel> {
+    open func fullSnap(i: String) {
         var fullSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
+        
         fullSnapshot.appendSections(src.sections)
         
         for sect in src.sections {
-            fullSnapshot.appendItems(sect.content, toSection: sect)
+            if (sect.content.count < 6) || sect.header == i {
+                fullSnapshot.appendItems(sect.content, toSection: sect)
+            } else {
+                let content = [sect.content[0], sect.content[1], sect.content[2], sect.content[3], sect.content[4], sect.content[5]]
+                fullSnapshot.appendItems(content, toSection: sect)
+            }
         }
         
-        return fullSnapshot
+        dataSource?.apply(fullSnapshot, animatingDifferences: true)
     }
     
-    func cutSnap() -> NSDiffableDataSourceSnapshot<section, FrameModel> {
+    func cutSnap() {
         var cutSnapshot = NSDiffableDataSourceSnapshot<section, FrameModel>()
         cutSnapshot.appendSections(src.sections)
         
@@ -126,15 +132,8 @@ class ViewController: UIViewController {
             }
         }
         
-        return cutSnapshot
-    }
-    
-    func reloadData() {
-        let cutSnapshot = cutSnap()
         dataSource?.apply(cutSnapshot, animatingDifferences: true)
     }
-    
-    
     
     //MARK: - СompositionalLayout
     
