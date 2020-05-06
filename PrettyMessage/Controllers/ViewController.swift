@@ -71,6 +71,10 @@ class ViewController: UIViewController {
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
+        let header = createHeader()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 7, bottom: 30, right: 7)
+        let size = CGFloat((view.frame.width - 45) / 3)
+        layout.itemSize = CGSize(width: size, height: size)
         return layout
     }
     
@@ -284,4 +288,33 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
        return src.sections.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0,left: 15,bottom: 0,right: 15)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (view.frame.width - 15) / 3
+        return CGSize(width: size, height: size)
+    }
+    
+//    func collectionView(layout collectionViewLayout: UICollectionViewLayout,
+//                        insetForSectionAt section: Int) -> UIEdgeInsets {
+//        let sectionInsets = UIEdgeInsets(top: 10, left: 7, bottom: 30, right: 7)
+//        return sectionInsets
+//    }
+    
+    func collectionView(layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
 }
