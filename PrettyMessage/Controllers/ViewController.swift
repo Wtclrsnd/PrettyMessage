@@ -297,11 +297,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
         header?.title.text = src.sections[indexPath.section].header
-        if src.sections[indexPath.section].content.count <= 6{
+        if src.sections[indexPath.section].content.count >= 6{
+            header?.button.isHidden = false
+        } else {
             header?.button.isHidden = true
         }
+        header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         header?.button.tag = indexPath.section
         return header!
+    }
+    
+    @objc func btnDo(_ sender: UIButton) {
+        print(sender.tag)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
