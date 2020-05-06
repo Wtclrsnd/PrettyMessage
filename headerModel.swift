@@ -61,6 +61,6 @@ class sectionHeader: UICollectionReusableView {
     
 //    @objc func allPushed(){
 //        let text = title.text ?? "sosi"
-//        ViewController.fullSnap
+    
 //    }
 }
