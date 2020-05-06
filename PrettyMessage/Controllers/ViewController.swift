@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     //MARK: - UI layout
     func addLayout() {
         let layout = createCollectionViewLayout()
-        mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        mainCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
         mainCollectionView.allowsSelection = true
@@ -59,11 +59,21 @@ class ViewController: UIViewController {
         
         view.addSubview(mainCollectionView)
         
-        mainCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
+//        mainCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
         
         
         mainCollectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
         mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
+        
+        title = "Шаблоны"
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = false
+        
+        let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(useUserPhoto))
+        let rightItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.camera, target: self, action: #selector(takeAPhoto))
+        self.navigationItem.leftBarButtonItem = leftItem
+        self.navigationItem.rightBarButtonItem = rightItem
+        navigationController?.navigationBar.tintColor = .systemBlue
     }
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -183,7 +193,7 @@ class ViewController: UIViewController {
     //MARK: -  Camera and Library actions
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @objc func useUserPhoto(_ sender: UIBarButtonItem) {
+    @objc func useUserPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         
@@ -192,7 +202,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     
     
-    @objc func takeAPhoto(_ sender: UIBarButtonItem) {
+    @objc func takeAPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .camera
         
