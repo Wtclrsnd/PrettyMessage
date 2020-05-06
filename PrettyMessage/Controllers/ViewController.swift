@@ -11,9 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var fillBucket: UIBarButtonItem!
-    @IBOutlet var mainView: UIView!
-    @IBOutlet weak var toolBar: UIToolbar!
     
     //MARK: - variables
     var mainCollectionView: UICollectionView!
@@ -62,7 +59,7 @@ class ViewController: UIViewController {
         
         view.addSubview(mainCollectionView)
         
-        mainCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: mainView.safeAreaLayoutGuide.leadingAnchor, bottom: toolBar.topAnchor, trailing: mainView.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
+        mainCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
         
         
         mainCollectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
@@ -186,7 +183,7 @@ class ViewController: UIViewController {
     //MARK: -  Camera and Library actions
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBAction func useUserPhoto(_ sender: UIBarButtonItem) {
+    @objc func useUserPhoto(_ sender: UIBarButtonItem) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         
@@ -195,7 +192,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     
     
-    @IBAction func takeAPhoto(_ sender: UIBarButtonItem) {
+    @objc func takeAPhoto(_ sender: UIBarButtonItem) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .camera
         
@@ -293,11 +290,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         if src.sections[indexPath.section].content.count <= 6{
             header?.button.isHidden = true
         }
+        header?.button.tag = indexPath.section
         return header!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: mainView.frame.width, height: 50)
+        return CGSize(width: view.frame.width, height: 50)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
