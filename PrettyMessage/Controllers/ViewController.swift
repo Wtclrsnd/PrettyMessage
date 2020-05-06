@@ -71,10 +71,7 @@ class ViewController: UIViewController {
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let header = createHeader()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 7, bottom: 30, right: 7)
-        let size = CGFloat((view.frame.width - 45) / 3)
-        layout.itemSize = CGSize(width: size, height: size)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 7, bottom: 40, right: 7)
         return layout
     }
     
@@ -263,7 +260,8 @@ extension UIView {
 
 
 //MARK: - CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//MARK: - CollectionView
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if src.sections[section].content.count < 6 {
@@ -284,37 +282,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell ?? UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (view.frame.width - 45) / 3
+        return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
+        header?.title.text = src.sections[indexPath.section].header
+        if src.sections[indexPath.section].content.count <= 6{
+            header?.button.isHidden = true
+        }
+        return header!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: mainView.frame.width, height: 50)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
        return src.sections.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0,left: 15,bottom: 0,right: 15)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (view.frame.width - 15) / 3
-        return CGSize(width: size, height: size)
-    }
-    
-//    func collectionView(layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let sectionInsets = UIEdgeInsets(top: 10, left: 7, bottom: 30, right: 7)
-//        return sectionInsets
-//    }
-    
-    func collectionView(layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
 }
