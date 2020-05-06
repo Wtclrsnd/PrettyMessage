@@ -24,6 +24,7 @@
 		722C20F02460CD250029AC93 /* headerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C20EF2460CD250029AC93 /* headerModel.swift */; };
 		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
+		C3D021F92463667E002CCC44 /* categoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D021F82463667E002CCC44 /* categoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		722C20EF2460CD250029AC93 /* headerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerModel.swift; sourceTree = "<group>"; };
 		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
+		C3D021F82463667E002CCC44 /* categoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoriesView.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -131,8 +133,9 @@
 		728EC1222458B80300C928C1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				728EC12D245B264700C928C1 /* drawViewController.swift */,
 				722A29552454A84400C06F05 /* ViewController.swift */,
+				C3D021F82463667E002CCC44 /* categoriesView.swift */,
+				728EC12D245B264700C928C1 /* drawViewController.swift */,
 				574DC850245D9C3600352E69 /* TestViewController.swift */,
 			);
 			path = Controllers;
@@ -283,6 +286,7 @@
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
 				722C20F02460CD250029AC93 /* headerModel.swift in Sources */,
+				C3D021F92463667E002CCC44 /* categoriesView.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				722906D7245E07F600069685 /* source.swift in Sources */,
 				574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */,

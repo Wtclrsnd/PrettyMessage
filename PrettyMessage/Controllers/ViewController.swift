@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
     private var src = source()
+    private var allTitles: [String] = []
     
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
     
@@ -292,7 +293,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
-        header?.title.text = " " + src.sections[indexPath.section].header
+        let text = src.sections[indexPath.section].header
+        header?.title.text = " " + text
         if src.sections[indexPath.section].content.count >= 6{
             header?.button.isHidden = false
         } else {
@@ -300,11 +302,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
         header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         header?.button.tag = indexPath.section
+        allTitles.append(header?.title.text ?? "sosi")
         return header!
     }
     
     @objc func btnDo(_ sender: UIButton) {
+        let nextView = categoriesView()
         print(sender.tag)
+        nextView.openedTitle = allTitles[sender.tag]
+        nextView.openedSection = sender.tag
+        navigationController?.pushViewController(nextView, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
