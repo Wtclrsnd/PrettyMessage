@@ -27,7 +27,6 @@ class sectionHeader: UICollectionReusableView {
     }
     
     private func custom() {
-//        button.addTarget(self, action: #selector(allPushed), for: .touchUpInside)
         title.textColor = .black
         title.font = UIFont(name: "Helvetica Neue", size: 30)
         title.isHighlighted = true
@@ -58,9 +57,4 @@ class sectionHeader: UICollectionReusableView {
             button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.15)
             ])
     }
-    
-//    @objc func allPushed(){
-//        let text = title.text ?? "sosi"
-    
-//    }
 }

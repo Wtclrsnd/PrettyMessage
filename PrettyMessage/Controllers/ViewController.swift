@@ -10,18 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //MARK: - Outlets
-    
-    //MARK: - variables
+//MARK: - variables
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
     private var src = source()
     
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
-
-    //photo source - FramesModel.swift
     
-    //MARK: - viewDidLoad
+//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +42,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //MARK: - UI layout
+//MARK: - UI layout
     func addLayout() {
         let layout = createCollectionViewLayout()
         mainCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
@@ -58,9 +54,6 @@ class ViewController: UIViewController {
         mainCollectionView.dataSource = self
         
         view.addSubview(mainCollectionView)
-        
-//        mainCollectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
-        
         
         mainCollectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
         mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
@@ -190,7 +183,9 @@ class ViewController: UIViewController {
 
 }
 
-    //MARK: -  Camera and Library actions
+
+
+//MARK: -  Camera and Library actions
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc func useUserPhoto() {
@@ -230,7 +225,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 
-//    //MARK: - UIView Extension
+
+//MARK: - UIView Extension
 extension UIView {
 
 
@@ -266,7 +262,7 @@ extension UIView {
 }
 
 
-//MARK: - CollectionView
+
 //MARK: - CollectionView
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -296,7 +292,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
-        header?.title.text = src.sections[indexPath.section].header
+        header?.title.text = " " + src.sections[indexPath.section].header
         if src.sections[indexPath.section].content.count >= 6{
             header?.button.isHidden = false
         } else {
