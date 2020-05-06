@@ -51,8 +51,8 @@ class ViewController: UIViewController {
     
     //MARK: - UI layout
     func addLayout() {
-        
-        mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = createCollectionViewLayout()
+        mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainCollectionView.backgroundColor = .white
         mainCollectionView.allowsSelection = true
@@ -69,7 +69,10 @@ class ViewController: UIViewController {
         mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
     }
     
-    
+    func createCollectionViewLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        return layout
+    }
     
     //MARK: - DiffableDataSource
 //    func createDataSource() {
@@ -168,15 +171,15 @@ class ViewController: UIViewController {
 //        return section
 //    }
 //
-//    func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-//
-//        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-//
-//        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: size, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-//
-//        return sectionHeader
-//    }
-//
+    func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: size, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+
+        return sectionHeader
+    }
+
 }
 
     //MARK: -  Camera and Library actions
