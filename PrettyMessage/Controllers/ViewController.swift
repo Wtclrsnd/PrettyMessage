@@ -287,6 +287,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("sosi")
         let nextViewDraw = drawViewController()
         let url = src.sections[indexPath.section].content[indexPath.item].uri
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!

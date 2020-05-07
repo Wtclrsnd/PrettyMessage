@@ -18,7 +18,8 @@ class drawViewController: UIViewController {
         
         view.backgroundColor = .gray
         view.addSubview(image)
-        image.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor, size: .init(width: view.frame.width, height: view.frame.height / 2))
+        image.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        image.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
     }
     
 }
