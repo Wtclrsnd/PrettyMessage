@@ -10,24 +10,28 @@ import UIKit
 
 class drawViewController: UIViewController {
 
-    var camImage: UIImage?
     var imageUrl: URL?
-    
+    var camImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let image = UIImageView()
-        
+        image.kf.setImage(with: imageUrl)
+
         if imageUrl != nil {
             image.kf.setImage(with: imageUrl)
         } else {
             image.image = camImage
         }
+
         
         view.backgroundColor = .gray
         view.addSubview(image)
-        image.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        image.center = view.center
+        image.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         image.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        image.heightAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        image.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
     }
     
 }
