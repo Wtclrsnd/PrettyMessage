@@ -288,7 +288,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextViewDraw = drawViewController()
-        }
+        let url = src.sections[indexPath.section].content[indexPath.item].uri
+        let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let urlencoded = URL(string: encoded)
+        nextViewDraw.imageUrl = urlencoded
+        navigationController?.pushViewController(nextViewDraw, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (view.frame.width - 45) / 3
