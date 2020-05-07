@@ -33,10 +33,11 @@ class sectionHeader: UICollectionReusableView {
         title.translatesAutoresizingMaskIntoConstraints = false
         
         button.setTitleColor(UIColor(named: "ButtonColor"), for: .normal)
-        button.setTitle("All", for: .normal)
+        button.setTitle("Показать все", for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         button.isUserInteractionEnabled = true
         button.showsTouchWhenHighlighted = true
+        button.contentHorizontalAlignment = .right
         button.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -45,16 +46,15 @@ class sectionHeader: UICollectionReusableView {
         addSubview(title)
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: button.leadingAnchor),
+            title.trailingAnchor.constraint(equalTo: centerXAnchor),
             title.topAnchor.constraint(equalTo: topAnchor),
             title.bottomAnchor.constraint(equalTo: bottomAnchor),
-            title.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.85),
+            title.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.85),
             
-            button.leadingAnchor.constraint(equalTo: title.trailingAnchor), 
-            button.trailingAnchor.constraint(equalTo: trailingAnchor),
-            button.topAnchor.constraint(equalTo: topAnchor),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor),
-            button.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.15)
+            button.leadingAnchor.constraint(equalTo: title.trailingAnchor),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            button.centerYAnchor.constraint(equalTo: centerYAnchor),
+            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)
             ])
     }
 }

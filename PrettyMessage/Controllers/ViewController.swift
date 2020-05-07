@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     private var buttonTapped = false
     private var buttonAction: (()->Void)?
     private var targetSection: Int?
+    private var titleOnChange: (()->Void)?
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
     
 //MARK: - viewDidLoad
@@ -220,6 +221,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         buttonAction = { [weak self] in
             self?.mainCollectionView.reloadData()
         }
+        titleOnChange = { [weak self] in
+            header?.button.setTitle((self?.buttonTapped ?? false) ? "Скрыть" : "Показать все", for: .normal)
+        }
         header?.button.tag = indexPath.section
         header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         return header!
@@ -228,6 +232,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     @objc func btnDo(_ sender: UIButton) {
         buttonTapped = !buttonTapped
         targetSection = sender.tag
+        titleOnChange?()
         print(collectionView(mainCollectionView, numberOfItemsInSection: sender.tag))
         buttonAction?()
     }
