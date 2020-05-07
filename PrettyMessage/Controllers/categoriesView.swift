@@ -11,7 +11,8 @@ import UIKit
 class categoriesView: UIViewController {
     
     var openedTitle: String?
-    var openedSection: Int?
+    var openedSectionInt: Int?
+    var opendSection: section?
     var collectionView: UICollectionView!
     private var viewModel = TestViewModel()
     private var src1 = source()
@@ -63,7 +64,7 @@ class categoriesView: UIViewController {
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 15, left: 7, bottom: 40, right: 7)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 7, bottom: 40, right: 7)
         return layout
     }
     
@@ -74,26 +75,15 @@ class categoriesView: UIViewController {
 extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == openedSection! {
-            print(section)
-            return src1.sections[section].content.count
-        } else {
-            print("Не нужно")
-            return 0
-        }
+        return (opendSection?.content.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell
-        
-        if indexPath.section == openedSection! {
-            let myUrl = self.src1.sections[indexPath.section].content[indexPath.row].uri
-            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
-            let urlencoded = URL(string: encoded)
-            cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
-        } else {
-            cell?.isHidden = true
-        }
+        let myUrl = opendSection?.content[indexPath.row].uri
+        let encoded = myUrl!.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        let urlencoded = URL(string: encoded)
+        cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
 
         return cell ?? UICollectionViewCell()
     }
@@ -108,7 +98,7 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return src1.sections.count
+        return 1
     }
     
 }

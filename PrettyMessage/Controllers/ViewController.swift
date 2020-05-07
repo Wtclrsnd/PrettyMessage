@@ -282,9 +282,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let urlencoded = URL(string: encoded)
         
         cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
-        
+    
         return cell ?? UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextViewDraw = drawViewController()
+        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (view.frame.width - 45) / 3
@@ -294,6 +298,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeader.reuseId, for: indexPath) as? sectionHeader
         let text = src.sections[indexPath.section].header
+        if allTitles.count <= collectionView.numberOfSections {
+            allTitles.append(text)
+        } else {
+        }
         header?.title.text = " " + text
         if src.sections[indexPath.section].content.count >= 6{
             header?.button.isHidden = false
@@ -302,15 +310,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         }
         header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         header?.button.tag = indexPath.section
-        allTitles.append(header?.title.text ?? "sosi")
         return header!
     }
     
     @objc func btnDo(_ sender: UIButton) {
         let nextView = categoriesView()
-        print(sender.tag)
         nextView.openedTitle = allTitles[sender.tag]
-        nextView.openedSection = sender.tag
+        nextView.openedSectionInt = sender.tag
+        nextView.opendSection = src.sections[sender.tag]
         navigationController?.pushViewController(nextView, animated: true)
     }
     
