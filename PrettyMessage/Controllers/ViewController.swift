@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     private var allTitles: [String] = []
     private var buttonTapped = false
     private var buttonAction: (()->Void)?
+    private var targetSection: Int?
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
     
 //MARK: - viewDidLoad
@@ -172,7 +173,7 @@ extension UIView {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if src.sections[section].content.count < 6 || buttonTapped {
+        if src.sections[section].content.count < 6 || (buttonTapped && targetSection == section) {
             return src.sections[section].content.count
         } else {
             return 6
@@ -219,13 +220,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         buttonAction = { [weak self] in
             self?.mainCollectionView.reloadData()
         }
-        header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         header?.button.tag = indexPath.section
+        header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         return header!
     }
     
     @objc func btnDo(_ sender: UIButton) {
         buttonTapped = !buttonTapped
+        targetSection = sender.tag
         print(collectionView(mainCollectionView, numberOfItemsInSection: sender.tag))
         buttonAction?()
     }
