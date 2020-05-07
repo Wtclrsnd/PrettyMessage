@@ -10,11 +10,19 @@ import UIKit
 
 class drawViewController: UIViewController {
 
+    var camImage: UIImage?
     var imageUrl: URL?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let image = UIImageView()
-        image.kf.setImage(with: imageUrl)
+        
+        if imageUrl != nil {
+            image.kf.setImage(with: imageUrl)
+        } else {
+            image.image = camImage
+        }
         
         view.backgroundColor = .gray
         view.addSubview(image)
