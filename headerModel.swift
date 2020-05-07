@@ -14,10 +14,12 @@ class sectionHeader: UICollectionReusableView {
     
     let title = UILabel()
     let button = UIButton()
+    var buttonTapped = false
+    var mySection: Int?
+    var buttonAction: ((Int)->Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         custom()
         setConstraints()
     }
@@ -32,8 +34,9 @@ class sectionHeader: UICollectionReusableView {
         title.isHighlighted = true
         title.translatesAutoresizingMaskIntoConstraints = false
         
+        button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         button.setTitleColor(UIColor(named: "ButtonColor"), for: .normal)
-        button.setTitle("Показать все", for: .normal)
+        button.setTitle("Все", for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         button.isUserInteractionEnabled = true
         button.showsTouchWhenHighlighted = true
@@ -56,5 +59,10 @@ class sectionHeader: UICollectionReusableView {
             button.centerYAnchor.constraint(equalTo: centerYAnchor),
             button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)
             ])
+    }
+    
+    @objc func btnDo(_ sender: UIButton) {
+        buttonTapped = !buttonTapped
+        buttonAction?(sender.tag)
     }
 }

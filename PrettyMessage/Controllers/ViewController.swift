@@ -9,18 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
 //MARK: - variables
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
     private var src = source()
     private var allTitles: [String] = []
-    private var buttonTapped = false
-    private var buttonAction: (()->Void)?
-    private var targetSection: Int?
-    private var titleOnChange: (()->Void)?
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
-    
+    var buttonTapped = false
+    var targetSection: Int?
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +171,7 @@ extension UIView {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if src.sections[section].content.count < 6 || (buttonTapped && targetSection == section) {
+        if src.sections[section].content.count < 6 || buttonTapped && targetSection == section {
             return src.sections[section].content.count
         } else {
             return 6
@@ -212,30 +209,24 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             allTitles.append(text)
         } else {
         }
+        header?.mySection = indexPath.section
         header?.title.text = " " + text
         if src.sections[indexPath.section].content.count >= 6{
             header?.button.isHidden = false
         } else {
             header?.button.isHidden = true
         }
-        buttonAction = { [weak self] in
+        header?.buttonAction = { [weak self] targetSection in
+            self?.targetSection = targetSection
+            self?.buttonTapped = header?.buttonTapped ?? false
+            print("booom")
             self?.mainCollectionView.reloadData()
         }
-        titleOnChange = { [weak self] in
-            header?.button.setTitle((self?.buttonTapped ?? false) ? "Скрыть" : "Показать все", for: .normal)
-        }
         header?.button.tag = indexPath.section
-        header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         return header!
     }
     
-    @objc func btnDo(_ sender: UIButton) {
-        buttonTapped = !buttonTapped
-        targetSection = sender.tag
-        titleOnChange?()
-        print(collectionView(mainCollectionView, numberOfItemsInSection: sender.tag))
-        buttonAction?()
-    }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
