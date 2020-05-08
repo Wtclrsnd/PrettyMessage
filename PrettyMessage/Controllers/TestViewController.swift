@@ -25,7 +25,7 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(imageView)
-        viewModel.onGetting = { [weak self] in
+        viewModel.onGetting = {
             print("kekkk")
         }
         imageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 5, bottom: 0, right: 5))
