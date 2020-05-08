@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     private var viewModel = TestViewModel()
     private var src = source()
     private var allTitles: [String] = []
+    private var buttonTapped = false
+    private var buttonAction: (()->Void)?
+    private var targetSection: Int?
+    private var camImage: UIImage?
+    private var titleOnChange: (()->Void)?
     private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
     var buttonTapped = false
     var targetSection: Int?
@@ -75,15 +80,6 @@ class ViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 15, left: 7, bottom: 40, right: 7)
         return layout
     }
-    
-    func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-
-        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: size, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-
-        return sectionHeader
-    }
 
 }
 
@@ -95,6 +91,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     @objc func useUserPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
         
         self.present(imagePickerController, animated: true, completion: nil)
     }
@@ -107,7 +104,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
-            self.present(imagePickerController, animated: true, completion: nil)
+            imagePickerController.showsCameraControls = true
+            self.present(imagePickerController, animated: true, completion: showDraw)
         } else {
             let alert = UIAlertController(title: "Camera is unavilable!", message: nil, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -116,15 +114,24 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[.originalImage] as? UIImage
+        guard let img = info[.originalImage] as? UIImage else { return }
+        self.camImage = img
         
-        let _ = image //this is an image for segue
+
+        picker.dismiss(animated: true, completion: showDraw)
         
-        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func showDraw() {
+        let nextViewDraw = drawViewController()
+        nextViewDraw.camImage = camImage
+        if camImage == nil {print ("sosi")}
+        self.navigationController?.pushViewController(nextViewDraw, animated: true)
+//        self.present(nextViewDraw, animated: true, completion: nil)
     }
 }
 
@@ -132,7 +139,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 //MARK: - UIView Extension
 extension UIView {
-
 
     func anchor(top: NSLayoutYAxisAnchor?,
                 leading:NSLayoutXAxisAnchor?,
