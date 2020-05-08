@@ -90,6 +90,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     @objc func useUserPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
         
         self.present(imagePickerController, animated: true, completion: nil)
     }
@@ -103,7 +104,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
             imagePickerController.showsCameraControls = true
-            self.present(imagePickerController, animated: true, completion: nil)
+            self.present(imagePickerController, animated: true, completion: showDraw)
         } else {
             let alert = UIAlertController(title: "Camera is unavilable!", message: nil, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -113,9 +114,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let img = info[.originalImage] as? UIImage else { return }
-        camImage = img
+        self.camImage = img
+        
 
-        picker.dismiss(animated: true, completion: showDraw) //this doesn't work but it is right
+        picker.dismiss(animated: true, completion: showDraw)
         
     }
     
@@ -126,8 +128,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func showDraw() {
         let nextViewDraw = drawViewController()
         nextViewDraw.camImage = camImage
-        if camImage == nil { print ("sosi")}
+        if camImage == nil {print ("sosi")}
         self.navigationController?.pushViewController(nextViewDraw, animated: true)
+//        self.present(nextViewDraw, animated: true, completion: nil)
     }
 }
 
@@ -135,7 +138,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
 //MARK: - UIView Extension
 extension UIView {
-
 
     func anchor(top: NSLayoutYAxisAnchor?,
                 leading:NSLayoutXAxisAnchor?,

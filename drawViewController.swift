@@ -28,6 +28,7 @@ class drawViewController: UIViewController {
         view.backgroundColor = .gray
         view.addSubview(image)
         image.center = view.center
+        image.contentMode = .scaleAspectFill
         image.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
         image.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         image.heightAnchor.constraint(equalToConstant: view.frame.width).isActive = true
