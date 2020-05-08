@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iOSPhotoEditor
 
 class ViewController: UIViewController {
     
@@ -117,7 +118,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         self.camImage = img
         
 
-        picker.dismiss(animated: true, completion: showDraw)
+        picker.dismiss(animated: true, completion: nil)
+        
+        callingEditor(img)
         
     }
     
@@ -194,12 +197,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextViewDraw = drawViewController()
+//        let nextViewDraw = drawViewController()
         let url = src.sections[indexPath.section].content[indexPath.item].uri
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let urlencoded = URL(string: encoded)
-        nextViewDraw.imageUrl = urlencoded
-        navigationController?.pushViewController(nextViewDraw, animated: true)
+        do {
+            let data = try Data(contentsOf: urlencoded! as URL)
+            let img = UIImage(data: data)
+            callingEditor(img!)
+        } catch {
+            print("Unable to load data: \(error)")
+        }
+        
+//        nextViewDraw.imageUrl = urlencoded
+//        navigationController?.pushViewController(nextViewDraw, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -248,3 +259,36 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
 }
+
+//MARK: - Photo Editor
+extension ViewController: PhotoEditorDelegate {
+    
+    func doneEditing(image: UIImage) {
+        //here bust be saving
+        print ("sosi penis")
+    }
+        
+    func canceledEditing() {
+        print("Canceled")
+        
+    }
+    
+    func callingEditor(_ image: UIImage){
+        let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
+            photoEditor.photoEditorDelegate = self
+            photoEditor.image = image
+            //Colors for drawing and Text, If not set default values will be used
+            //photoEditor.colors = [.red, .blue, .green]
+            
+            //Stickers that the user will choose from to add on the image
+//            for i in 0...10 {
+//                photoEditor.stickers.append(UIImage(named: i.description )!)
+//            }
+            
+            //To hide controls - array of enum control
+            //photoEditor.hiddenControls = [.crop, .draw, .share]
+            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext //or .overFullScreen for transparency
+            present(photoEditor, animated: true, completion: nil)
+    }
+}
+

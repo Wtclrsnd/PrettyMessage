@@ -7,33 +7,43 @@
 //
 
 import UIKit
+import iOSPhotoEditor
 
 class drawViewController: UIViewController {
 
     var imageUrl: URL?
     var camImage: UIImage?
+    let imageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImageView()
-        image.kf.setImage(with: imageUrl)
-
+        
         if imageUrl != nil {
-            image.kf.setImage(with: imageUrl)
+            imageView.kf.setImage(with: imageUrl)
         } else {
-            image.image = camImage
+            imageView.image = camImage
         }
 
         
         view.backgroundColor = .gray
-        view.addSubview(image)
-        image.center = view.center
-        image.contentMode = .scaleAspectFill
-        image.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
-        image.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        image.heightAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        image.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
+        view.addSubview(imageView)
+        imageView.center = view.center
+        imageView.contentMode = .scaleAspectFill
+        imageView.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: view.safeAreaLayoutGuide.trailingAnchor)
+        imageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150).isActive = true
     }
     
 }
 
+//extension drawViewController: PhotoEditorDelegate {
+//    
+//    func doneEditing(image: UIImage) {
+//            imageView.image = image
+//        }
+//        
+//        func canceledEditing() {
+//            print("Canceled")
+//        }
+//}
