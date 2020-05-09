@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     private var targetSection: Int?
     private var camImage: UIImage?
     private var titleOnChange: (()->Void)?
-    private var dataSource: UICollectionViewDiffableDataSource<section, FrameModel>?
+    
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
