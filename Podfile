@@ -8,5 +8,6 @@ target 'PrettyMessage' do
   pod 'Alamofire', '~> 5.0.2'
   pod 'SwiftLint'
   pod 'Kingfisher'
+  pod 'iOSPhotoEditor', '~> 1.0'
 
 end

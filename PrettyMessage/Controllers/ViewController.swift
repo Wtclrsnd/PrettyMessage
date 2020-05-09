@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iOSPhotoEditor
 
 class ViewController: UIViewController {
 
@@ -103,7 +104,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
             imagePickerController.showsCameraControls = true
-            self.present(imagePickerController, animated: true, completion: showDraw)
+            self.present(imagePickerController, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Camera is unavilable!", message: nil, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -114,22 +115,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let img = info[.originalImage] as? UIImage else { return }
         self.camImage = img
-        
 
-        picker.dismiss(animated: true, completion: showDraw)
+        picker.dismiss(animated: true, completion: nil)
+        
+        callingEditor(img)
         
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func showDraw() {
-        let nextViewDraw = drawViewController()
-        nextViewDraw.camImage = camImage
-        if camImage == nil {print ("sosi")}
-        self.navigationController?.pushViewController(nextViewDraw, animated: true)
-//        self.present(nextViewDraw, animated: true, completion: nil)
     }
 }
 
@@ -193,12 +187,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextViewDraw = drawViewController()
         let url = src.sections[indexPath.section].content[indexPath.item].uri
         let encoded = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let urlencoded = URL(string: encoded)
-        nextViewDraw.imageUrl = urlencoded
-        navigationController?.pushViewController(nextViewDraw, animated: true)
+        do {
+            let data = try Data(contentsOf: urlencoded! as URL)
+            let img = UIImage(data: data)
+            callingEditor(img!)
+        } catch {
+            print("Unable to load data: \(error)")
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -241,3 +239,41 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
 }
+
+
+
+//MARK: - Photo Editor
+extension ViewController: PhotoEditorDelegate {
+    
+    func doneEditing(image: UIImage) {
+         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+        
+    func canceledEditing() {
+        print("Canceled")
+        
+    }
+    
+    func callingEditor(_ image: UIImage){
+        let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
+            photoEditor.photoEditorDelegate = self
+            photoEditor.image = image
+            
+            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext
+            present(photoEditor, animated: true, completion: nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Ошибка сохранения", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Сохранено!", message: "Фото было загружено в библиотеку.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+}
+
