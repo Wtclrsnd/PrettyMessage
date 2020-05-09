@@ -22,9 +22,7 @@
 		722A295E2454A84800C06F05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 722A295D2454A84800C06F05 /* Assets.xcassets */; };
 		722A29612454A84800C06F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 722A295F2454A84800C06F05 /* LaunchScreen.storyboard */; };
 		722C20F02460CD250029AC93 /* headerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C20EF2460CD250029AC93 /* headerModel.swift */; };
-		728EC12E245B264700C928C1 /* drawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12D245B264700C928C1 /* drawViewController.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
-		C3D021F92463667E002CCC44 /* categoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D021F82463667E002CCC44 /* categoriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +44,7 @@
 		722A29602454A84800C06F05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		722A29622454A84800C06F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		722C20EF2460CD250029AC93 /* headerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerModel.swift; sourceTree = "<group>"; };
-		728EC12D245B264700C928C1 /* drawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawViewController.swift; sourceTree = SOURCE_ROOT; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
-		C3D021F82463667E002CCC44 /* categoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoriesView.swift; sourceTree = "<group>"; };
 		C7ACC0F1FDDD49ABB3D1B5EE /* Pods_PrettyMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrettyMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,8 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				722A29552454A84400C06F05 /* ViewController.swift */,
-				C3D021F82463667E002CCC44 /* categoriesView.swift */,
-				728EC12D245B264700C928C1 /* drawViewController.swift */,
 				574DC850245D9C3600352E69 /* TestViewController.swift */,
 			);
 			path = Controllers;
@@ -286,14 +280,12 @@
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
 				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
 				722C20F02460CD250029AC93 /* headerModel.swift in Sources */,
-				C3D021F92463667E002CCC44 /* categoriesView.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
 				722906D7245E07F600069685 /* source.swift in Sources */,
 				574DC855245DA04F00352E69 /* TestViewModel.swift in Sources */,
 				722A295C2454A84500C06F05 /* PrettyMessage.xcdatamodeld in Sources */,
 				574DC853245D9FC400352E69 /* FrameModel.swift in Sources */,
 				722906D5245DE8C700069685 /* section.swift in Sources */,
-				728EC12E245B264700C928C1 /* drawViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,13 +423,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = "@thisdjango @wtclrsnd @grishaseleznev ";
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "1.0 Alpha";
 				PRODUCT_BUNDLE_IDENTIFIER = Styleru.PrettyMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -451,13 +444,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = "@thisdjango @wtclrsnd @grishaseleznev ";
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "1.0 Alpha";
 				PRODUCT_BUNDLE_IDENTIFIER = Styleru.PrettyMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
