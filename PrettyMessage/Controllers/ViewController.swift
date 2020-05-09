@@ -264,8 +264,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 extension ViewController: PhotoEditorDelegate {
     
     func doneEditing(image: UIImage) {
-        //here bust be saving
-        print ("sosi penis")
+         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
         
     func canceledEditing() {
@@ -277,18 +276,22 @@ extension ViewController: PhotoEditorDelegate {
         let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
             photoEditor.photoEditorDelegate = self
             photoEditor.image = image
-            //Colors for drawing and Text, If not set default values will be used
-            //photoEditor.colors = [.red, .blue, .green]
             
-            //Stickers that the user will choose from to add on the image
-//            for i in 0...10 {
-//                photoEditor.stickers.append(UIImage(named: i.description )!)
-//            }
-            
-            //To hide controls - array of enum control
-            //photoEditor.hiddenControls = [.crop, .draw, .share]
-            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext //or .overFullScreen for transparency
+            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext
             present(photoEditor, animated: true, completion: nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
 }
 
