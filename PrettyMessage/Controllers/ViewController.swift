@@ -193,7 +193,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         do {
             let data = try Data(contentsOf: urlencoded! as URL)
             let img = UIImage(data: data)
-            callingEditor(img!)
+            if img != nil{
+                callingEditor(img!)
+            }
         } catch {
             print("Unable to load data: \(error)")
         }
@@ -222,7 +224,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             self?.targetSection = targetSection
             self?.buttonTapped = header?.buttonTapped ?? false
             print("booom")
-            self?.mainCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self?.mainCollectionView.reloadData()
+            }
         }
         header?.button.tag = indexPath.section
         return header!
@@ -261,6 +265,10 @@ extension ViewController: PhotoEditorDelegate {
             
             photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext
             present(photoEditor, animated: true, completion: nil)
+        
+        for i in 0...10 {
+        photoEditor.stickers.append(UIImage(named: i.description )!)
+        }
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

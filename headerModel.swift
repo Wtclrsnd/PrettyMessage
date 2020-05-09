@@ -63,6 +63,7 @@ class sectionHeader: UICollectionReusableView {
     
     @objc func btnDo(_ sender: UIButton) {
         buttonTapped = !buttonTapped
+//        sender.setTitle(sender.titleLabel?.text == "Все" ? "Скрыть":"Все", for: .normal)
         buttonAction?(sender.tag)
     }
 }
