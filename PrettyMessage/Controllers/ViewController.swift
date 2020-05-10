@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
         
         title = "Шаблоны"
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = .systemBackground
         navigationController?.navigationBar.isTranslucent = false
         
         let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(useUserPhoto))
