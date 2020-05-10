@@ -29,7 +29,7 @@ class sectionHeader: UICollectionReusableView {
     }
     
     private func custom() {
-        title.textColor = .black
+        title.textColor = UIColor(named: "textColor")
         title.font = UIFont(name: "Helvetica Neue", size: 30)
         title.isHighlighted = true
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,6 @@ class sectionHeader: UICollectionReusableView {
         button.setTitle("Все", for: .normal)
         button.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 17)
         button.isUserInteractionEnabled = true
-        button.showsTouchWhenHighlighted = true
         button.contentHorizontalAlignment = .right
         button.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -57,7 +56,8 @@ class sectionHeader: UICollectionReusableView {
             button.leadingAnchor.constraint(equalTo: title.trailingAnchor),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             button.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)
+            button.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.85),
+            button.widthAnchor.constraint(equalTo: widthAnchor, constant: 0.1)
             ])
     }
     

@@ -28,14 +28,19 @@ class ViewController: UIViewController {
         
         addLayout()
         
-        viewModel.onGetting = {
-            if (self.viewModel.framesModel != nil) {
-                self.src = self.makingSource(raw: self.viewModel.framesModel!)!
+        DispatchQueue.main.async {
+            self.viewModel.onGetting = {
+                if (self.viewModel.framesModel != nil) {
+                    self.src = self.makingSource(raw: self.viewModel.framesModel!)!
+                } else {
+                    self.errorScreen()
+                }
+                self.mainCollectionView.reloadData()
             }
-            self.mainCollectionView.reloadData()
-            self.viewModel.framesModel?.removeAll()
         }
+        
         viewModel.grabData()
+        viewModel.framesModel?.removeAll()
     }
     
     func makingSource(raw: FramesModel?) -> source?{
@@ -52,7 +57,7 @@ class ViewController: UIViewController {
         let layout = createCollectionViewLayout()
         mainCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mainCollectionView.backgroundColor = .white
+        mainCollectionView.backgroundColor = .systemBackground
         mainCollectionView.allowsSelection = true
         mainCollectionView.isUserInteractionEnabled = true
         mainCollectionView.delegate = self
@@ -80,6 +85,21 @@ class ViewController: UIViewController {
         return layout
     }
 
+    func errorScreen() {
+        let errorText = UILabel()
+        errorText.text = "Необходимо подключение к интернету!"
+        errorText.numberOfLines = 3
+        errorText.textAlignment = .center
+        errorText.textColor = UIColor(named: "textColor")
+        errorText.translatesAutoresizingMaskIntoConstraints = false
+        errorText.font = UIFont(name: "Helvetica Neue", size: 40)
+        view.addSubview(errorText)
+        NSLayoutConstraint.activate([
+            errorText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorText.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            errorText.widthAnchor.constraint(equalToConstant: 300)
+        ])
+    }
 }
 
 
@@ -284,4 +304,3 @@ extension ViewController: PhotoEditorDelegate {
         }
     }
 }
-
