@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         
         addLayout()
         
+        //GCD Time SOOOOQA
         DispatchQueue.main.async {
             self.viewModel.onGetting = {
                 if (self.viewModel.framesModel != nil) {
