@@ -16,11 +16,8 @@ class ViewController: UIViewController {
     private var viewModel = TestViewModel()
     private var src = source()
     private var allTitles: [String] = []
-    private var buttonTapped = false
-    private var buttonAction: (()->Void)?
     private var targetSection: Int?
     private var camImage: UIImage?
-    private var titleOnChange: (()->Void)?
     
 //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -190,7 +187,7 @@ extension UIView {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if src.sections[section].content.count < 6 || buttonTapped && targetSection == section {
+        if src.sections[section].content.count < 6 {
             return src.sections[section].content.count
         } else {
             return 6
@@ -234,21 +231,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             allTitles.append(text)
         } else {
         }
-        header?.mySection = indexPath.section
         header?.title.text = " " + text
         if src.sections[indexPath.section].content.count >= 6{
             header?.button.isHidden = false
         } else {
             header?.button.isHidden = true
         }
-        header?.buttonAction = { [weak self] targetSection in
-            self?.targetSection = targetSection
-            self?.buttonTapped = header?.buttonTapped ?? false
-            print("booom")
-            DispatchQueue.main.async {
-                self?.mainCollectionView.reloadData()
-            }
-        }
+        
+        header?.button.addTarget(self, action: #selector(btnDo(_ :)), for: .touchUpInside)
         header?.button.tag = indexPath.section
         return header!
     }
@@ -263,6 +253,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
        return src.sections.count
     }
     
+    @objc func btnDo(_ sender: UIButton) {
+        let nextView = categoriesView()
+        nextView.openedTitle = allTitles[sender.tag]
+        nextView.openedSectionInt = sender.tag
+        nextView.openedSection = src.sections[sender.tag]
+        navigationController?.pushViewController(nextView, animated: true)
+    }
 }
 
 
