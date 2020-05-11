@@ -10,16 +10,12 @@ import iOSPhotoEditor
 
 class categoriesView: UIViewController {
     
-    var openedTitle: String?
     var openedSectionInt: Int?
     var openedSection: section?
     var collectionView: UICollectionView!
-    private var viewModel = TestViewModel()
-    private var src1 = source()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addLayout()
     }
     
@@ -38,11 +34,9 @@ class categoriesView: UIViewController {
         
         collectionView.register(imageCell.self, forCellWithReuseIdentifier: imageCell.reuseId)
         
-        title = "\(openedTitle!)"
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.tintColor = .systemBlue
-        
         title = openedSection?.header
     }
     
@@ -52,7 +46,10 @@ class categoriesView: UIViewController {
         return layout
     }
     
-    
+    deinit {
+        openedSection = nil
+        print ("full is deinit")
+    }
 }
 
 
@@ -113,7 +110,6 @@ extension categoriesView: PhotoEditorDelegate {
         
     func canceledEditing() {
         print("Canceled")
-        
     }
     
     func callingEditor(_ image: UIImage){

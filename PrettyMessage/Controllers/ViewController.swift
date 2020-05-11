@@ -255,7 +255,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     @objc func btnDo(_ sender: UIButton) {
         let nextView = categoriesView()
-        nextView.openedTitle = allTitles[sender.tag]
         nextView.openedSectionInt = sender.tag
         nextView.openedSection = src.sections[sender.tag]
         navigationController?.pushViewController(nextView, animated: true)
