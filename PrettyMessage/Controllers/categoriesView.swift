@@ -7,8 +7,9 @@
 //
 import UIKit
 import iOSPhotoEditor
+import Kingfisher
 
-class СategoriesView: UIViewController {
+class categoriesView: UIViewController {
     
     var openedSectionInt: Int?
     var openedSection: section?
@@ -46,6 +47,10 @@ class СategoriesView: UIViewController {
         return layout
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        ImageCache.default.clearMemoryCache()
+    }
+    
     deinit {
         openedSectionInt = nil
         openedSection = nil
@@ -57,7 +62,7 @@ class СategoriesView: UIViewController {
 
 
 //MARK: - CollectionView
-extension СategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (openedSection?.content.count)!
@@ -107,7 +112,7 @@ extension СategoriesView: UICollectionViewDelegate, UICollectionViewDataSource,
 }
 
 //MARK: - Photo Editor
-extension СategoriesView: PhotoEditorDelegate {
+extension categoriesView: PhotoEditorDelegate {
     
     func doneEditing(image: UIImage) {
          UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)

@@ -8,6 +8,7 @@
 
 import UIKit
 import iOSPhotoEditor
+import Kingfisher
 
 class ViewController: UIViewController {
     
@@ -18,27 +19,32 @@ class ViewController: UIViewController {
     private var allTitles: [String] = []
     private var targetSection: Int?
     private var camImage: UIImage?
-    
+    private var refreshControl = UIRefreshControl()
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addLayout()
-        
-        //GCD Time SOOOOQA
         DispatchQueue.main.async {
-            self.viewModel.onGetting = {
-                if (self.viewModel.framesModel != nil) {
-                    self.src = self.makingSource(raw: self.viewModel.framesModel!)!
+            self.viewModel.onGetting = { [weak self] in
+                if let framesModel = self?.viewModel.framesModel {
+                    if let source = self?.makingSource(raw: framesModel) { self?.src = source }
                 } else {
-                    self.errorScreen()
+                    self?.errorScreen()
                 }
-                self.mainCollectionView.reloadData()
+                ImageCache.default.clearMemoryCache()
+                self?.mainCollectionView.reloadData()
+                self?.mainCollectionView.refreshControl?.endRefreshing()
             }
         }
-        
+        mainCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         viewModel.grabData()
         viewModel.framesModel?.removeAll()
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        viewModel.grabData()
     }
     
     func makingSource(raw: FramesModel?) -> source?{
@@ -255,7 +261,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     @objc func btnDo(_ sender: UIButton) {
-        let nextView = CategoriesView()
+        let nextView = categoriesView()
         nextView.openedSectionInt = sender.tag
         nextView.openedSection = src.sections[sender.tag]
         navigationController?.pushViewController(nextView, animated: true)
