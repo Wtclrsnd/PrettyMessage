@@ -8,7 +8,7 @@
 import UIKit
 import iOSPhotoEditor
 
-class categoriesView: UIViewController {
+class СategoriesView: UIViewController {
     
     var openedSectionInt: Int?
     var openedSection: section?
@@ -47,7 +47,9 @@ class categoriesView: UIViewController {
     }
     
     deinit {
+        openedSectionInt = nil
         openedSection = nil
+        collectionView = nil
         print ("full is deinit")
     }
 }
@@ -55,7 +57,7 @@ class categoriesView: UIViewController {
 
 
 //MARK: - CollectionView
-extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension СategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (openedSection?.content.count)!
@@ -63,10 +65,13 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? imageCell
-        let myUrl = openedSection?.content[indexPath.row].uri
-        let encoded = myUrl!.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
-        let urlencoded = URL(string: encoded)
-        cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+        if openedSection != nil{
+            let myUrl = openedSection!.content[indexPath.row].uri
+            let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+            let urlencoded = URL(string: encoded)
+            cell?.image.kf.indicatorType = .activity
+            cell?.image.kf.setImage(with: urlencoded)
+        }
 
         return cell ?? UICollectionViewCell()
     }
@@ -102,7 +107,7 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
 }
 
 //MARK: - Photo Editor
-extension categoriesView: PhotoEditorDelegate {
+extension СategoriesView: PhotoEditorDelegate {
     
     func doneEditing(image: UIImage) {
          UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)

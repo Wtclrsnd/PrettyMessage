@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  imageCell.swift
 //  PrettyMessage
 //
 //  Created by Emil Shpeklord on 30.04.2020.

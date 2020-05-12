@@ -10,7 +10,7 @@ import UIKit
 import iOSPhotoEditor
 
 class ViewController: UIViewController {
-
+    
 //MARK: - variables
     var mainCollectionView: UICollectionView!
     private var viewModel = TestViewModel()
@@ -199,7 +199,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let myUrl = self.src.sections[indexPath.section].content[indexPath.row].uri
         let encoded = myUrl.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         let urlencoded = URL(string: encoded)
-        cell?.image.kf.setImage(with: urlencoded, placeholder: UIImage(named: "Picture"))
+        cell?.image.kf.indicatorType = .activity
+        cell?.image.kf.setImage(with: urlencoded)
     
         return cell ?? UICollectionViewCell()
     }
@@ -254,7 +255,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     @objc func btnDo(_ sender: UIButton) {
-        let nextView = categoriesView()
+        let nextView = CategoriesView()
         nextView.openedSectionInt = sender.tag
         nextView.openedSection = src.sections[sender.tag]
         navigationController?.pushViewController(nextView, animated: true)
