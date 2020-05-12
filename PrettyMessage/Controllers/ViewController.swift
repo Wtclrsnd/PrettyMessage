@@ -124,6 +124,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     @objc func takeAPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .camera
+        imagePickerController.delegate = self
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
