@@ -81,6 +81,10 @@ class ViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = leftItem
         self.navigationItem.rightBarButtonItem = rightItem
         navigationController?.navigationBar.tintColor = .systemBlue
+        
+        let photoRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
+        
+        view.addGestureRecognizer(photoRec)
     }
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -119,8 +123,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
-    
-    
     @objc func takeAPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .camera
@@ -134,6 +136,17 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             let alert = UIAlertController(title: "Camera is unavilable!", message: nil, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func photoRecognizer(_ recognizer: UISwipeGestureRecognizer){
+        switch recognizer.direction {
+        case .left:
+            takeAPhoto()
+        case .right:
+            useUserPhoto()
+        default:
+            print("oops")
         }
     }
     
