@@ -61,7 +61,11 @@ class ViewController: UIViewController {
         let layout = createCollectionViewLayout()
         mainCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         mainCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mainCollectionView.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            mainCollectionView.backgroundColor = .systemBackground
+        } else {
+            mainCollectionView.backgroundColor = .white
+        }
         mainCollectionView.allowsSelection = true
         mainCollectionView.isUserInteractionEnabled = true
         mainCollectionView.delegate = self
@@ -73,7 +77,11 @@ class ViewController: UIViewController {
         mainCollectionView.register(sectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeader.reuseId)
         
         title = "Шаблоны"
-        navigationController?.navigationBar.tintColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.tintColor = .systemBackground
+        } else {
+            navigationController?.navigationBar.tintColor = .white
+        }
         navigationController?.navigationBar.isTranslucent = false
         
         let leftItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.organize, target: self, action: #selector(useUserPhoto))
@@ -82,9 +90,14 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightItem
         navigationController?.navigationBar.tintColor = .systemBlue
         
-        let photoRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
+//        let photoRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
+//        photoRec.direction = .left
+        let albumRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
+        albumRec.direction = .right
         
-        view.addGestureRecognizer(photoRec)
+        
+//        view.addGestureRecognizer(photoRec)
+        view.addGestureRecognizer(albumRec)
     }
     
     func createCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -142,8 +155,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     @objc func photoRecognizer(_ recognizer: UISwipeGestureRecognizer){
         switch recognizer.direction {
         case .left:
+            print("camera!")
             takeAPhoto()
         case .right:
+            print("album!")
             useUserPhoto()
         default:
             print("oops")

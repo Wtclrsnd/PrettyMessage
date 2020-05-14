@@ -25,7 +25,11 @@ class categoriesView: UIViewController {
         let layout = createCollectionViewLayout()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = .systemBackground
+        } else {
+            collectionView.backgroundColor = .white
+        }
         collectionView.allowsSelection = true
         collectionView.isUserInteractionEnabled = true
         collectionView.delegate = self
