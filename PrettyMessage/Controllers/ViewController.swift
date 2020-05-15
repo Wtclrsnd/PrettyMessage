@@ -90,13 +90,13 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightItem
         navigationController?.navigationBar.tintColor = .systemBlue
         
-//        let photoRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
-//        photoRec.direction = .left
+        let photoRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
+        photoRec.direction = .left
         let albumRec = UISwipeGestureRecognizer(target: self, action: #selector(photoRecognizer))
         albumRec.direction = .right
         
         
-//        view.addGestureRecognizer(photoRec)
+        view.addGestureRecognizer(photoRec)
         view.addGestureRecognizer(albumRec)
     }
     
