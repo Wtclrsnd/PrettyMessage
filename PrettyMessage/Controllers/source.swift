@@ -22,6 +22,8 @@ struct source{
             }
         }
         
+        headers = headers.shuffled()
+        
         for name in headers{
             sects.append(section(header: name))
         }
