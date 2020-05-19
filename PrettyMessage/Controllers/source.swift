@@ -33,6 +33,7 @@ struct source{
                 if head.category == sects[i].header{
                     sects[i].content.append(head)
                 }
+                sects[i].content.sort(by: {$0.uri > $1.uri})
             }
         }
         
