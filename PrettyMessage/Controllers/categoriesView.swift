@@ -6,8 +6,8 @@
 //  Copyright © 2020 Бизнес в стиле .RU. All rights reserved.
 //
 import UIKit
-import iOSPhotoEditor
 import Kingfisher
+import PhotoEditorSDK
 
 class categoriesView: UIViewController {
     
@@ -93,7 +93,12 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
                    let data = try Data(contentsOf: urlencoded! as URL)
                    let img = UIImage(data: data)
                    if img != nil{
-                       callingEditor(img!)
+                       let photo = Photo(image: img!)
+
+                       let photoEditViewController = PhotoEditViewController(photoAsset: photo)
+                       photoEditViewController.delegate = self
+
+                       present(photoEditViewController, animated: true, completion: nil)
                    }
                } catch {
                    print("Unable to load data: \(error)")
@@ -116,29 +121,33 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
 }
 
 //MARK: - Photo Editor
-extension categoriesView: PhotoEditorDelegate {
-    
-    func doneEditing(image: UIImage) {
-         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+
+extension categoriesView: PhotoEditViewControllerDelegate {
+    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        dismiss(animated: true, completion: nil)
+      }
     }
-        
-    func canceledEditing() {
-        print("Canceled")
+
+    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
     }
-    
-    func callingEditor(_ image: UIImage){
-        let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
-            photoEditor.photoEditorDelegate = self
-            photoEditor.image = image
-            
-            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext
-            present(photoEditor, animated: true, completion: nil)
-        
-        for i in 0...10 {
-        photoEditor.stickers.append(UIImage(named: i.description )!)
-        }
+
+    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
     }
-    
+
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // we got back an error!
@@ -152,4 +161,3 @@ extension categoriesView: PhotoEditorDelegate {
         }
     }
 }
-

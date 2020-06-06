@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import iOSPhotoEditor
 import Kingfisher
 import PhotoEditorSDK
 
@@ -172,7 +171,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 
         picker.dismiss(animated: true, completion: nil)
         
-        callingEditor(img)
+        let photo = Photo(image: img)
+        
+        let photoEditViewController = PhotoEditViewController(photoAsset: photo)
+        photoEditViewController.delegate = self
+
+        present(photoEditViewController, animated: true, completion: nil)
         
     }
     
@@ -306,44 +310,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 
 
 //MARK: - Photo Editor
-extension ViewController: PhotoEditorDelegate {
-    
-    func doneEditing(image: UIImage) {
-         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-        
-    func canceledEditing() {
-        print("Canceled")
-        
-    }
-    
-    func callingEditor(_ image: UIImage){
-        let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
-            photoEditor.photoEditorDelegate = self
-            photoEditor.image = image
-            
-            photoEditor.modalPresentationStyle = UIModalPresentationStyle.currentContext
-            present(photoEditor, animated: true, completion: nil)
-        
-        for i in 0...10 {
-        photoEditor.stickers.append(UIImage(named: i.description )!)
-        }
-    }
-    
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            // we got back an error!
-            let ac = UIAlertController(title: "Ошибка сохранения", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Сохранено!", message: "Фото было загружено в библиотеку.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        }
-    }
-}
-
 extension ViewController: PhotoEditViewControllerDelegate {
     func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
       if let navigationController = photoEditViewController.navigationController {
@@ -370,4 +336,16 @@ extension ViewController: PhotoEditViewControllerDelegate {
       }
     }
 
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Ошибка сохранения", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Сохранено!", message: "Фото было загружено в библиотеку.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
 }
