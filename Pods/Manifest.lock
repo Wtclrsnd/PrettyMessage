@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.5)
+  - imglyKit (10.13.1)
   - iOSPhotoEditor (1.0.0)
   - Kingfisher (4.10.1)
   - Moya/Core (14.0.0):
@@ -7,6 +8,8 @@ PODS:
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
+  - PhotoEditorSDK (10.13.1):
+    - imglyKit (= 10.13.1)
   - RxSwift (5.1.1)
   - SwiftLint (0.39.2)
 
@@ -15,25 +18,30 @@ DEPENDENCIES:
   - iOSPhotoEditor (~> 1.0)
   - Kingfisher
   - Moya/RxSwift (~> 14.0)
+  - PhotoEditorSDK (~> 10.13)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - imglyKit
     - iOSPhotoEditor
     - Kingfisher
     - Moya
+    - PhotoEditorSDK
     - RxSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  imglyKit: e9aad13dd136e82d1a69cb7ee79e0169a2ccda53
   iOSPhotoEditor: 2951f35246a31dcb428b6292248a9c065582d03e
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PhotoEditorSDK: eba8c2e128c6679580ba82b2a063a0174f40903b
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
-PODFILE CHECKSUM: 070f444a401fa10554a493e84108f4f3714dbcf9
+PODFILE CHECKSUM: 7a1eaa9075d1db202c5ed8b6d5d2f32d800b1cde
 
 COCOAPODS: 1.9.1

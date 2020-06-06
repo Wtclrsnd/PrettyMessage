@@ -2,4 +2,9 @@ ${PODS_ROOT}/Target Support Files/Pods-PrettyMessage/Pods-PrettyMessage-framewor
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
+${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework
+${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework.dSYM
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/iOSPhotoEditor/iOSPhotoEditor.framework
+${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework
+${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework.dSYM

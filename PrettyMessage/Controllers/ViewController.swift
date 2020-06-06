@@ -9,6 +9,7 @@
 import UIKit
 import iOSPhotoEditor
 import Kingfisher
+import PhotoEditorSDK
 
 class ViewController: UIViewController {
     
@@ -219,7 +220,32 @@ extension UIView {
 
 
 //MARK: - CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoEditViewControllerDelegate{
+    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+
+    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+
+    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if src.sections[section].content.count < 6 {
@@ -248,7 +274,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             let data = try Data(contentsOf: urlencoded! as URL)
             let img = UIImage(data: data)
             if img != nil{
-                callingEditor(img!)
+                let photo = Photo(image: img!)
+
+                let photoEditViewController = PhotoEditViewController(photoAsset: photo)
+                photoEditViewController.delegate = self
+
+                present(photoEditViewController, animated: true, completion: nil)
             }
         } catch {
             print("Unable to load data: \(error)")
