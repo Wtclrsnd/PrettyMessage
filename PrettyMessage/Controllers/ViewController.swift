@@ -220,32 +220,7 @@ extension UIView {
 
 
 //MARK: - CollectionView
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PhotoEditViewControllerDelegate{
-    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
-      if let navigationController = photoEditViewController.navigationController {
-        navigationController.popViewController(animated: true)
-      } else {
-        dismiss(animated: true, completion: nil)
-      }
-    }
-
-    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
-      if let navigationController = photoEditViewController.navigationController {
-        navigationController.popViewController(animated: true)
-      } else {
-        dismiss(animated: true, completion: nil)
-      }
-    }
-
-    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
-      if let navigationController = photoEditViewController.navigationController {
-        navigationController.popViewController(animated: true)
-      } else {
-        dismiss(animated: true, completion: nil)
-      }
-    }
-    
-    
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if src.sections[section].content.count < 6 {
@@ -367,4 +342,32 @@ extension ViewController: PhotoEditorDelegate {
             present(ac, animated: true)
         }
     }
+}
+
+extension ViewController: PhotoEditViewControllerDelegate {
+    func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        dismiss(animated: true, completion: nil)
+      }
+    }
+
+    func photoEditViewControllerDidFailToGeneratePhoto(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+
+    func photoEditViewControllerDidCancel(_ photoEditViewController: PhotoEditViewController) {
+      if let navigationController = photoEditViewController.navigationController {
+        navigationController.popViewController(animated: true)
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    }
+
 }
