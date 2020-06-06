@@ -9,5 +9,6 @@ target 'PrettyMessage' do
   pod 'SwiftLint'
   pod 'Kingfisher'
   pod 'iOSPhotoEditor', '~> 1.0'
+  pod 'PhotoEditorSDK', '~> 10.13'
 
 end
