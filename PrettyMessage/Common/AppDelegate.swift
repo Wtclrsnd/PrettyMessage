@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Kingfisher
+import PhotoEditorSDK
 
 
 @UIApplicationMain
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: ViewController())
         window?.makeKeyAndVisible()
+        if let licenseURL = Bundle.main.url(forResource: "pesdk_ios_license", withExtension: "") {
+           PESDK.unlockWithLicense(at: licenseURL)
+         }
         return true
     }
 
