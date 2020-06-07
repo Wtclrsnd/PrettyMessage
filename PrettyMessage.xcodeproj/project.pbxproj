@@ -436,7 +436,7 @@
 				CODE_SIGN_ENTITLEMENTS = PrettyMessage/PrettyMessage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YL2SY7FNNK;
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -461,7 +461,7 @@
 				CODE_SIGN_ENTITLEMENTS = PrettyMessage/PrettyMessage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YL2SY7FNNK;
 				INFOPLIST_FILE = PrettyMessage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
