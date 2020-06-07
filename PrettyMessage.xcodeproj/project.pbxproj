@@ -22,6 +22,7 @@
 		722C20F02460CD250029AC93 /* headerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C20EF2460CD250029AC93 /* headerModel.swift */; };
 		72405444246978D3007FC65A /* categoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72405443246978D3007FC65A /* categoriesView.swift */; };
 		728EC130245B6F7900C928C1 /* imageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728EC12F245B6F7900C928C1 /* imageCell.swift */; };
+		72C5954F248D5AB600A6C154 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C5954E248D5AB600A6C154 /* Localized.swift */; };
 		B43251EA31098E7E4992B828 /* Pods_PrettyMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E291C2BBC359AC17470645 /* Pods_PrettyMessage.framework */; };
 		C38E11C5248C1240004BE05B /* pesdk_ios_license in Resources */ = {isa = PBXBuildFile; fileRef = C38E11C4248C1240004BE05B /* pesdk_ios_license */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		726222C2246F21E90063C697 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		726222C324703A460063C697 /* PrettyMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrettyMessage.entitlements; sourceTree = "<group>"; };
 		728EC12F245B6F7900C928C1 /* imageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageCell.swift; path = PrettyMessage/Controllers/imageCell.swift; sourceTree = SOURCE_ROOT; };
+		72C5954E248D5AB600A6C154 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		950B20EA7C1C3CFFD7658D93 /* Pods-PrettyMessage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrettyMessage.debug.xcconfig"; path = "Target Support Files/Pods-PrettyMessage/Pods-PrettyMessage.debug.xcconfig"; sourceTree = "<group>"; };
 		C38E11C4248C1240004BE05B /* pesdk_ios_license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pesdk_ios_license; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 			children = (
 				C38E11C4248C1240004BE05B /* pesdk_ios_license */,
 				722A29512454A84400C06F05 /* AppDelegate.swift */,
+				72C5954E248D5AB600A6C154 /* Localized.swift */,
 				722A29532454A84400C06F05 /* SceneDelegate.swift */,
 				722A295D2454A84800C06F05 /* Assets.xcassets */,
 				574DC858245DA07B00352E69 /* Target.swift */,
@@ -286,6 +289,7 @@
 				574DC859245DA07B00352E69 /* Target.swift in Sources */,
 				722A29522454A84400C06F05 /* AppDelegate.swift in Sources */,
 				728EC130245B6F7900C928C1 /* imageCell.swift in Sources */,
+				72C5954F248D5AB600A6C154 /* Localized.swift in Sources */,
 				574DC857245DA06B00352E69 /* TestViewModelProtocol.swift in Sources */,
 				722C20F02460CD250029AC93 /* headerModel.swift in Sources */,
 				722A29542454A84400C06F05 /* SceneDelegate.swift in Sources */,
