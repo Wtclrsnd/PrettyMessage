@@ -443,9 +443,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "pesdk_transform_accessibility_rotateButtonHint": "Нажмите дважды, чтобы повернуть",
                 "pesdk_transform_accessibility_rotateButtonLabel": "Повернуть",
                 "pesdk_transform_accessibility_scalePickerLabel": "Обрезка и наклон",
-                "pesdk_transform_asset_freeCrop": "Оригинальный",
+                "pesdk_transform_asset_freeCrop": "Свое",
                 "pesdk_transform_asset_square": "Квадрат",
-                "pesdk_transform_button_reset": "Отменить все",
+                "pesdk_transform_button_reset": "Сброс",
                 "pesdk_transform_title_name": "Обрезать",
                 "pesdk_trim_title_name": "Подрезать",
             ]
