@@ -26,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let licenseURL = Bundle.main.url(forResource: "pesdk_ios_license", withExtension: "") {
            PESDK.unlockWithLicense(at: licenseURL)
          }
+        PESDK.localizationDictionary = [
+            "ru": [
+                "pesdk_transform_title_name": "Преобразовать"
+            ]
+        ]
         return true
     }
 
