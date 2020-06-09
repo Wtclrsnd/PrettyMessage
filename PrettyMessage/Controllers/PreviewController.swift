@@ -10,10 +10,14 @@ import Foundation
 import UIKit
 
 class preView: UIViewController{
-    var preImage: UIImageView!
+    var preImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(preImage)
+        let preImageView = UIImageView()
+        preImageView.image = preImage
+        preImageView.contentMode = .scaleAspectFit
+        view.addSubview(preImageView)
+        preImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor)
     }
 }

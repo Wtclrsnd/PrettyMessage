@@ -317,7 +317,8 @@ extension ViewController: PhotoEditViewControllerDelegate {
         navigationController.popViewController(animated: true)
       } else {
         navigationController?.pushViewController(previewController, animated: true)
-        previewController.preImage.image = image
+        previewController.preImage = image
+        dismiss(animated: true, completion: nil)
       }
     }
 
