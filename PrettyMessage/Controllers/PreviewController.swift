@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
-class preview: UIViewController{
+class preView: UIViewController{
+    var preImage: UIImageView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(preImage)
+    }
 }

@@ -312,11 +312,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
 //MARK: - Photo Editor
 extension ViewController: PhotoEditViewControllerDelegate {
     func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+        let previewController = preView()
       if let navigationController = photoEditViewController.navigationController {
         navigationController.popViewController(animated: true)
       } else {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        dismiss(animated: true, completion: nil)
+        navigationController?.pushViewController(previewController, animated: true)
+        previewController.preImage.image = image
       }
     }
 
