@@ -14,6 +14,7 @@ class preView: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isToolbarHidden = false
         let preImageView = UIImageView()
         preImageView.image = preImage
         preImageView.contentMode = .scaleAspectFit
