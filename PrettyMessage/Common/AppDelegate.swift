@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PESDK.localizationDictionary = [
             "ru": localize.dict
         ]
+        
         return true
     }
 
