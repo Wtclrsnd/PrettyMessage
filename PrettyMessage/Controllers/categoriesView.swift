@@ -124,10 +124,12 @@ extension categoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
 
 extension categoriesView: PhotoEditViewControllerDelegate {
     func photoEditViewController(_ photoEditViewController: PhotoEditViewController, didSave image: UIImage, and data: Data) {
+        let previewController = preView()
       if let navigationController = photoEditViewController.navigationController {
         navigationController.popViewController(animated: true)
       } else {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        navigationController?.pushViewController(previewController, animated: true)
+        previewController.preImage = image
         dismiss(animated: true, completion: nil)
       }
     }
@@ -148,16 +150,5 @@ extension categoriesView: PhotoEditViewControllerDelegate {
       }
     }
 
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            // we got back an error!
-            let ac = UIAlertController(title: "Ошибка сохранения", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Сохранено!", message: "Фото было загружено в библиотеку.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        }
-    }
+   
 }

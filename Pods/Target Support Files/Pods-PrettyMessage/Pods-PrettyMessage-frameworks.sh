@@ -203,7 +203,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework"
   install_dsym "${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/iOSPhotoEditor/iOSPhotoEditor.framework"
   install_framework "${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework"
   install_dsym "${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework.dSYM"
 fi
@@ -214,7 +213,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework"
   install_dsym "${PODS_ROOT}/PhotoEditorSDK/PhotoEditorSDK/PhotoEditorSDK.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/iOSPhotoEditor/iOSPhotoEditor.framework"
   install_framework "${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework"
   install_dsym "${PODS_ROOT}/imglyKit/PhotoEditorSDK/ImglyKit.framework.dSYM"
 fi

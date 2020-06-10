@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     private var targetSection: Int?
     private var camImage: UIImage?
     private var refreshControl = UIRefreshControl()
-//MARK: - viewDidLoad
+
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
